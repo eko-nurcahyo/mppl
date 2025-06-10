@@ -126,7 +126,3 @@ Jika ingin mulai fitur baru, ulangi proses buat branch baru dari branch `main` y
 | Push branch ke GitHub  | `git push origin namaanggota/nama-fitur`  |
 | Buat Pull Request      | Lewat GitHub web UI                        |
 
----
-
-Semoga panduan ini membantu kamu dan tim bekerja dengan lebih terstruktur dan lancar. Jika perlu saya buatkan file `.md` siap pakai, beri tahu saja ya!  
-Semangat terus, Eko! 🚀
