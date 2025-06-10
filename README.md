@@ -1,67 +1,132 @@
-Cara Kerja Tim dengan Git & GitHub — Versi Simpel
-# 1. Ambil Kode dari GitHub (Clone)
+
+# Cara Kerja Tim dengan Git & GitHub — Versi Simpel
+
+---
+
+## 1. Ambil Kode dari GitHub (Clone)
+
 Pertama kali di komputer kamu, kamu harus download (clone) dulu project dari GitHub ke komputer kamu:
 
+```bash
 git clone https://github.com/eko-nurcahyo/mppl.git
 cd mppl
-Artinya:
-clone = download semua kode project
-cd = masuk ke folder project
+```
 
-# 2. Pastikan Kode Terbaru di main
-Sebelum mulai kerja, pastikan kode utama (main) di komputer kamu sudah paling baru:
+**Artinya:**  
+- `clone` = download semua kode project  
+- `cd mppl` = masuk ke folder project yang sudah di-download
 
+---
+
+## 2. Pastikan Kode Terbaru di `main`
+
+Sebelum mulai kerja, pastikan kode utama (`main`) di komputer kamu sudah paling baru:
+
+```bash
 git checkout main
 git pull origin main
-Artinya:
-checkout main = pindah ke versi kode utama
-pull origin main = ambil update terbaru dari GitHub
+```
 
-# Buat Tempat Kerja Baru (Branch Baru)
-Supaya gak ganggu kerja orang lain dan kode utama tetap aman, kamu harus buat tempat kerja baru (branch) untuk fitur kamu. Contoh:
-(contoh)
+**Artinya:**  
+- `checkout main` artinya pindah ke branch utama (`main`)  
+- `pull origin main` mengambil pembaruan terbaru dari GitHub
+
+---
+
+## 3. Buat Tempat Kerja Baru (Branch Baru)
+
+Supaya tidak mengganggu kerja orang lain dan kode utama tetap aman, kamu harus buat branch baru untuk fitur kamu. Contoh:
+
+```bash
 git checkout -b eko/fitur-login
-Artinya:
-Buat cabang baru bernama eko/fitur-login
-Nanti kamu kerja di situ tanpa ganggu branch utama main
+```
 
-# Kerja dan Simpan Perubahan (Commit)
-Setelah kamu ubah atau buat kode, simpan dulu perubahan itu ke dalam Git:
+**Artinya:**  
+- Membuat branch baru bernama `eko/fitur-login`  
+- Kamu bekerja di branch ini tanpa mengganggu branch `main`
+
+---
+
+## 4. Kerja dan Simpan Perubahan (Commit)
+
+Setelah kamu membuat perubahan pada kode, simpan perubahan itu ke Git:
+
+```bash
 git add .
 git commit -m "Eko: tambah fitur login"
-Artinya:
-add . = tandai semua perubahan
-commit = simpan perubahan itu dengan pesan supaya jelas apa yang kamu ubah
+```
 
-# Kirim Perubahan ke GitHub (Push)
-Supaya temanmu bisa lihat dan cek kerjaanmu, kirim cabang (branch) dan perubahanmu ke GitHub:
+**Artinya:**  
+- `git add .` = menandai semua perubahan yang telah kamu buat  
+- `git commit -m` menyimpan perubahan dengan pesan yang jelas
+
+---
+
+## 5. Kirim Perubahan ke GitHub (Push)
+
+Agar perubahanmu bisa dilihat dan direview oleh teman tim, kirim (push) branch dan perubahanmu ke GitHub:
+
+```bash
 git push origin eko/fitur-login
-Artinya:
-Upload hasil kerjamu di cabang eko/fitur-login ke GitHub
+```
 
-# Buat Permintaan Gabung Kode (Pull Request)
-Di GitHub, kamu buka website repo, lalu klik tombol buat Pull Request dari cabangmu ke cabang main.
-Ini seperti bilang ke temanmu:
-“Hei, saya sudah selesai kerja fitur ini, tolong dicek dan digabung ke kode utama ya!”
+---
 
-# Setelah Disetujui, Perbarui Kode Utama di Komputer
-Kalau sudah disetujui dan digabung, kamu harus ambil update terbaru di komputer:
+## 6. Buat Permintaan Gabung Kode (Pull Request)
+
+Di GitHub, buka repository, lalu buat Pull Request (PR) dari branch kamu ke branch `main`. Ini untuk meminta anggota tim lain mereview dan menggabungkan perubahanmu ke branch utama.
+
+---
+
+## 7. Setelah Pull Request Disetujui dan Merge
+
+Setelah PR disetujui dan digabung (merge) ke branch `main`, update branch `main` di komputer kamu agar tetap sinkron:
+
+```bash
 git checkout main
 git pull origin main
-Artinya:
-Kode utama di komputer kamu diperbarui dengan versi yang terbaru
+```
 
-# Ulangi Lagi untuk Fitur Baru
-Kalau mau mulai fitur baru, ulangi buat branch baru dari main yang terbaru. Jadi selalu kerja di tempat terpisah supaya aman.
-Kenapa Harus Buat Branch Baru?
-  Supaya kode utama gak rusak kalau ada yang salah
-  Supaya kamu dan temanmu bisa kerja bersamaan tanpa saling ganggu
-  Supaya mudah cek dan review kerjaan sebelum digabung
+---
 
-# Intinya:
-Clone sekali dulu
-Selalu kerja di branch baru pakai nama kamu
-Commit & push hasil kerja
-Buat pull request di GitHub
-Setelah merge, update branch main di komputer
-Ulangi untuk kerja berikutnya
+## 8. Ulangi Proses untuk Fitur Baru
+
+Jika ingin mulai fitur baru, ulangi proses buat branch baru dari branch `main` yang sudah diperbarui supaya pekerjaanmu tetap terorganisir dan tidak bentrok dengan pekerjaan orang lain.
+
+---
+
+## Kenapa Harus Buat Branch Baru?
+
+- Menjaga branch utama (`main`) tetap stabil dan bersih  
+- Memungkinkan semua anggota tim bekerja secara paralel tanpa mengganggu satu sama lain  
+- Memudahkan review kode dan pengujian sebelum digabung ke branch utama
+
+---
+
+## Inti dari Cara Kerja Ini:
+
+- Clone repo sekali saja  
+- Selalu buat branch baru untuk setiap pekerjaan atau fitur baru  
+- Commit dan push perubahan ke branch tersebut  
+- Buat pull request untuk review dan merge ke `main`  
+- Setelah merge, update branch `main` lokal  
+- Ulangi untuk pekerjaan berikutnya
+
+---
+
+## Ringkasan Perintah Git
+
+| Aktivitas               | Perintah                                   |
+|------------------------|--------------------------------------------|
+| Clone repo             | `git clone <repo-url>`                      |
+| Masuk folder project   | `cd mppl`                                  |
+| Update branch main     | `git checkout main` <br> `git pull origin main` |
+| Buat branch baru       | `git checkout -b namaanggota/nama-fitur`  |
+| Commit perubahan       | `git add .` <br> `git commit -m "pesan"`  |
+| Push branch ke GitHub  | `git push origin namaanggota/nama-fitur`  |
+| Buat Pull Request      | Lewat GitHub web UI                        |
+
+---
+
+Semoga panduan ini membantu kamu dan tim bekerja dengan lebih terstruktur dan lancar. Jika perlu saya buatkan file `.md` siap pakai, beri tahu saja ya!  
+Semangat terus, Eko! 🚀
