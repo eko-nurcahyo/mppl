@@ -12,6 +12,7 @@
                     <a class="btn btn-square me-0" href="#"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
+            
             <div class="col-lg-3 col-md-6">
                 <h5 class="text-light mb-4">Address</h5>
                 <p><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
