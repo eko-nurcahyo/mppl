@@ -19,58 +19,77 @@
     <!-- Page Header End -->
 
     <!-- Donate Start -->
-    <div class="container-fluid py-5">
-        <div class="container">
-            <div class="row g-5 align-items-center">
-                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
-                    <div class="d-inline-block rounded-pill bg-secondary text-primary py-1 px-3 mb-3">Donate Now</div>
-                    <h1 class="display-6 mb-5">Thanks For The Results Achieved With You</h1>
-                    <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
-                </div>
-                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
-                    <div class="h-100 bg-secondary p-5">
-                        <form action="{{ route('donate.submit') }}" method="POST">
-                            @csrf
-                            <div class="row g-3">
-                                <div class="col-12">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control bg-light border-0" id="name" name="name" placeholder="Your Name" required>
-                                        <label for="name">Your Name</label>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-floating">
-                                        <input type="email" class="form-control bg-light border-0" id="email" name="email" placeholder="Your Email" required>
-                                        <label for="email">Your Email</label>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="btn-group d-flex justify-content-around" role="group" aria-label="Donation Amount">
-                                        <input type="radio" class="btn-check" name="amount" id="btnradio1" value="10" checked>
-                                        <label class="btn btn-light py-3" for="btnradio1">$10</label>
-
-                                        <input type="radio" class="btn-check" name="amount" id="btnradio2" value="20">
-                                        <label class="btn btn-light py-3" for="btnradio2">$20</label>
-
-                                        <input type="radio" class="btn-check" name="amount" id="btnradio3" value="30">
-                                        <label class="btn btn-light py-3" for="btnradio3">$30</label>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <button type="submit" class="btn btn-primary px-5" style="height: 60px;">
-                                        Donate Now
-                                        <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
-                                            <i class="fa fa-arrow-right"></i>
-                                        </div>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+   <!-- Donate Start -->
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="row g-5 align-items-center">
+            <!-- Kiri: Kata-kata Mutiara -->
+            <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                <div class="p-4 rounded shadow bg-white">
+                    <div class="d-inline-block rounded-pill bg-primary text-white py-1 px-3 mb-3">Mengapa Donasi?</div>
+                    <h2 class="mb-4">"Bersedekahlah, walau hanya dengan sebutir kurma."</h2>
+                    <p class="mb-3">Setiap kebaikan kecil akan dibalas berlipat ganda. Donasi Anda sangat berarti untuk perubahan besar di kehidupan orang lain.</p>
+                    <ul class="list-unstyled">
+                        <li><i class="fa fa-check-circle text-success me-2"></i>Donasi aman dan transparan</li>
+                        <li><i class="fa fa-check-circle text-success me-2"></i>Bukti transfer diverifikasi oleh admin</li>
+                        <li><i class="fa fa-check-circle text-success me-2"></i>Langsung membantu yang membutuhkan</li>
+                    </ul>
                 </div>
             </div>
+
+            <!-- Kanan: Form Donasi -->
+            <div class="col-lg-6 wow fadeIn" data-wow-delay="0.3s">
+                <div class="bg-secondary p-5 rounded">
+                    <form action="{{ route('donations.store') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control bg-white border-0 shadow-sm" id="name" name="nama" placeholder="Nama Anda" required>
+                                    <label for="name">Nama Anda</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="email" class="form-control bg-white border-0 shadow-sm" id="email" name="email" placeholder="Email Anda" required>
+                                    <label for="email">Email Anda</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="number" class="form-control bg-white border-0 shadow-sm" id="nominal" name="nominal" placeholder="Nominal Donasi" required>
+                                    <label for="nominal">Nominal Donasi (Rp)</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <select class="form-select bg-white border-0 shadow-sm" id="metode" name="metode_pembayaran" required>
+                                        <option selected disabled>-- Pilih Metode Pembayaran --</option>
+                                        <option value="BRI">Transfer Bank BRI</option>
+                                        <option value="DANA">DANA</option>
+                                        <option value="GoPay">GoPay</option>
+                                    </select>
+                                    <label for="metode">Metode Pembayaran</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label fw-bold text-white">Upload Bukti Transfer</label>
+                                <input type="file" name="bukti_transfer" class="form-control bg-white border-0 shadow-sm" accept="image/*" required>
+                            </div>
+                            <div class="col-12 text-center">
+                                <button type="submit" class="btn btn-primary w-75 py-3 rounded-pill">
+                                    Kirim Donasi <i class="fa fa-heart ms-2"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
         </div>
     </div>
-    <!-- Donate End -->
+</div>
+<!-- Donate End -->
+
 
 @endsection

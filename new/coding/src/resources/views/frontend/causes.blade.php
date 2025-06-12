@@ -27,103 +27,52 @@
                 <h1 class="display-6 mb-5">Every Child Deserves The Opportunity To Learn</h1>
             </div>
             <div class="row g-4 justify-content-center">
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="causes-item d-flex flex-column bg-light border-top border-5 border-primary rounded-top overflow-hidden h-100">
-                        <div class="text-center p-4 pt-0">
-                            <div class="d-inline-block bg-primary text-white rounded-bottom fs-5 pb-1 px-3 mb-4">
-                                <small>Education</small>
-                            </div>
-                            <h5 class="mb-3">Education For African Children</h5>
-                            <p>Tempor erat elitr rebum at clita dolor diam ipsum sit diam amet diam et eos</p>
-                            <div class="causes-progress bg-white p-3 pt-2">
-                                <div class="d-flex justify-content-between">
-                                    <p class="text-dark">$10,000 <small class="text-body">Goal</small></p>
-                                    <p class="text-dark">$9,542 <small class="text-body">Raised</small></p>
-                                </div>
-                                <div class="progress">
-                                    <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
-                                        <span>90%</span>
-                                    </div>
-                                </div>
-                            </div>
+    @forelse($programs as $program)
+        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="causes-item d-flex flex-column bg-light border-top border-5 border-primary rounded-top overflow-hidden h-100">
+                <div class="text-center p-4 pt-0">
+                    <div class="d-inline-block bg-primary text-white rounded-bottom fs-5 pb-1 px-3 mb-4">
+                        <small>{{ $program->kategori ?? 'Donasi' }}</small>
+                    </div>
+                    <h5 class="mb-3">{{ $program->judul }}</h5>
+                    <p>{{ $program->deskripsi }}</p>
+                    <div class="causes-progress bg-white p-3 pt-2">
+                        <div class="d-flex justify-content-between">
+                            <p class="text-dark">Rp{{ number_format($program->target,0,',','.') }} <small class="text-body">Goal</small></p>
+                            <p class="text-dark">Rp0 <small class="text-body">Raised</small></p>
+                            <!-- Raised bisa pakai sum dari tabel donasi jika mau -->
                         </div>
-                        <div class="position-relative mt-auto">
-                            <img class="img-fluid" src="{{ asset('assets/charitee/img/courses-1.jpg') }}" alt="">
-                            <div class="causes-overlay">
-                                <a class="btn btn-outline-primary" href="">
-                                    Read More
-                                    <div class="d-inline-flex btn-sm-square bg-primary text-white rounded-circle ms-2">
-                                        <i class="fa fa-arrow-right"></i>
-                                    </div>
-                                </a>
+                        <div class="progress">
+                            <div class="progress-bar"
+                                role="progressbar"
+                                style="width:0%;" {{-- Kalau mau otomatis, hitung persentase donasi --}}
+                                aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                                <span>0%</span>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="causes-item d-flex flex-column bg-light border-top border-5 border-primary rounded-top overflow-hidden h-100">
-                        <div class="text-center p-4 pt-0">
-                            <div class="d-inline-block bg-primary text-white rounded-bottom fs-5 pb-1 px-3 mb-4">
-                                <small>Pure Water</small>
-                            </div>
-                            <h5 class="mb-3">Ensure Pure Drinking Water</h5>
-                            <p>Tempor erat elitr rebum at clita dolor diam ipsum sit diam amet diam et eos</p>
-                            <div class="causes-progress bg-white p-3 pt-2">
-                                <div class="d-flex justify-content-between">
-                                    <p class="text-dark">$10,000 <small class="text-body">Goal</small></p>
-                                    <p class="text-dark">$9,542 <small class="text-body">Raised</small></p>
-                                </div>
-                                <div class="progress">
-                                    <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
-                                        <span>90%</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="position-relative mt-auto">
-                            <img class="img-fluid" src="{{ asset('assets/charitee/img/courses-2.jpg') }}" alt="">
-                            <div class="causes-overlay">
-                                <a class="btn btn-outline-primary" href="">
-                                    Read More
-                                    <div class="d-inline-flex btn-sm-square bg-primary text-white rounded-circle ms-2">
-                                        <i class="fa fa-arrow-right"></i>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
+                <div class="position-relative mt-auto">
+                    <img class="img-fluid" src="{{ asset('storage/'.$program->gambar) }}" alt="">
+                    <div class="causes-overlay">
+                       <a class="btn btn-outline-primary"
+   href="{{ route('donate', ['program' => $program->id]) }}">
+    Donasi
+    <div class="d-inline-flex btn-sm-square bg-primary text-white rounded-circle ms-2">
+        <i class="fa fa-arrow-right"></i>
+    </div>
+</a>
+
+
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="causes-item d-flex flex-column bg-light border-top border-5 border-primary rounded-top overflow-hidden h-100">
-                        <div class="text-center p-4 pt-0">
-                            <div class="d-inline-block bg-primary text-white rounded-bottom fs-5 pb-1 px-3 mb-4">
-                                <small>Healthy Life</small>
-                            </div>
-                            <h5 class="mb-3">Ensure Medical Treatment</h5>
-                            <p>Tempor erat elitr rebum at clita dolor diam ipsum sit diam amet diam et eos</p>
-                            <div class="causes-progress bg-white p-3 pt-2">
-                                <div class="d-flex justify-content-between">
-                                    <p class="text-dark">$10,000 <small class="text-body">Goal</small></p>
-                                    <p class="text-dark">$9,542 <small class="text-body">Raised</small></p>
-                                </div>
-                                <div class="progress">
-                                    <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
-                                        <span>90%</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="position-relative mt-auto">
-                            <img class="img-fluid" src="{{ asset('assets/charitee/img/courses-3.jpg') }}" alt="">
-                            <div class="causes-overlay">
-                                <a class="btn btn-outline-primary" href="">
-                                    Read More
-                                    <div class="d-inline-flex btn-sm-square bg-primary text-white rounded-circle ms-2">
-                                        <i class="fa fa-arrow-right"></i>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
+            </div>
+        </div>
+    @empty
+        <p class="text-center">Belum ada program donasi aktif.</p>
+    @endforelse
+</div>
+
                     </div>
                 </div>
             </div>
