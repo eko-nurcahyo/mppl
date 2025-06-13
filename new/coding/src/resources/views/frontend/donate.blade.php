@@ -1,95 +1,70 @@
 @extends('layouts.app')
-@section('title', 'Donate | ChariTeam')
+@section('title', 'Donasi | ' . ($program->judul ?? ''))
 
 @section('content')
+<div class="container py-5">
+    <h2 class="mb-4 text-center">Donasi untuk Program: <strong>{{ $program->judul ?? '-' }}</strong></h2>
+    <p class="text-center mb-4">{{ $program->deskripsi ?? '-' }}</p>
+    <p class="text-center mb-5">Total Donasi Terkumpul: <strong>Rp {{ number_format($totalTerkumpul ?? 0, 0, ',', '.') }}</strong></p>
 
-    <!-- Page Header Start -->
-    <div class="container-fluid page-header mb-5 wow fadeIn" data-wow-delay="0.1s">
-        <div class="container text-center">
-            <h1 class="display-4 text-white animated slideInDown mb-4">Donate</h1>
-            <nav aria-label="breadcrumb animated slideInDown">
-                <ol class="breadcrumb justify-content-center mb-0">
-                    <li class="breadcrumb-item"><a class="text-white" href="{{ url('/') }}">Home</a></li>
-                    <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
-                    <li class="breadcrumb-item text-primary active" aria-current="page">Donate</li>
-                </ol>
-            </nav>
+    @if(session('success'))
+        <div class="alert alert-success text-center">{{ session('success') }}</div>
+    @endif
+
+    <form action="{{ route('donate.store') }}" method="POST" enctype="multipart/form-data" class="mx-auto" style="max-width: 600px;">
+        @csrf
+        <input type="hidden" name="program_id" value="{{ $program->id ?? '' }}">
+
+        <div class="mb-3">
+            <label for="nama" class="form-label">Nama Lengkap</label>
+            <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama" name="nama" value="{{ old('nama') }}" required>
+            @error('nama')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
         </div>
-    </div>
-    <!-- Page Header End -->
 
-    <!-- Donate Start -->
-   <!-- Donate Start -->
-<div class="container-fluid py-5">
-    <div class="container">
-        <div class="row g-5 align-items-center">
-            <!-- Kiri: Kata-kata Mutiara -->
-            <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
-                <div class="p-4 rounded shadow bg-white">
-                    <div class="d-inline-block rounded-pill bg-primary text-white py-1 px-3 mb-3">Mengapa Donasi?</div>
-                    <h2 class="mb-4">"Bersedekahlah, walau hanya dengan sebutir kurma."</h2>
-                    <p class="mb-3">Setiap kebaikan kecil akan dibalas berlipat ganda. Donasi Anda sangat berarti untuk perubahan besar di kehidupan orang lain.</p>
-                    <ul class="list-unstyled">
-                        <li><i class="fa fa-check-circle text-success me-2"></i>Donasi aman dan transparan</li>
-                        <li><i class="fa fa-check-circle text-success me-2"></i>Bukti transfer diverifikasi oleh admin</li>
-                        <li><i class="fa fa-check-circle text-success me-2"></i>Langsung membantu yang membutuhkan</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Kanan: Form Donasi -->
-            <div class="col-lg-6 wow fadeIn" data-wow-delay="0.3s">
-                <div class="bg-secondary p-5 rounded">
-                    <form action="{{ route('donations.store') }}" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        <div class="row g-3">
-                            <div class="col-md-6">
-                                <div class="form-floating">
-                                    <input type="text" class="form-control bg-white border-0 shadow-sm" id="name" name="nama" placeholder="Nama Anda" required>
-                                    <label for="name">Nama Anda</label>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-floating">
-                                    <input type="email" class="form-control bg-white border-0 shadow-sm" id="email" name="email" placeholder="Email Anda" required>
-                                    <label for="email">Email Anda</label>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-floating">
-                                    <input type="number" class="form-control bg-white border-0 shadow-sm" id="nominal" name="nominal" placeholder="Nominal Donasi" required>
-                                    <label for="nominal">Nominal Donasi (Rp)</label>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-floating">
-                                    <select class="form-select bg-white border-0 shadow-sm" id="metode" name="metode_pembayaran" required>
-                                        <option selected disabled>-- Pilih Metode Pembayaran --</option>
-                                        <option value="BRI">Transfer Bank BRI</option>
-                                        <option value="DANA">DANA</option>
-                                        <option value="GoPay">GoPay</option>
-                                    </select>
-                                    <label for="metode">Metode Pembayaran</label>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <label class="form-label fw-bold text-white">Upload Bukti Transfer</label>
-                                <input type="file" name="bukti_transfer" class="form-control bg-white border-0 shadow-sm" accept="image/*" required>
-                            </div>
-                            <div class="col-12 text-center">
-                                <button type="submit" class="btn btn-primary w-75 py-3 rounded-pill">
-                                    Kirim Donasi <i class="fa fa-heart ms-2"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-
+        <div class="mb-3">
+            <label for="email" class="form-label">Alamat Email</label>
+            <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}" required>
+            @error('email')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
         </div>
-    </div>
+
+        <div class="mb-3">
+            <label for="nominal" class="form-label">Nominal Donasi (Rp)</label>
+            <input type="number" class="form-control @error('nominal') is-invalid @enderror" id="nominal" name="nominal" value="{{ old('nominal') }}" min="1" required>
+            @error('nominal')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="mb-3">
+            <label for="metode_pembayaran" class="form-label">Metode Pembayaran</label>
+            <select class="form-select @error('metode_pembayaran') is-invalid @enderror" id="metode_pembayaran" name="metode_pembayaran" required>
+                <option value="" disabled {{ old('metode_pembayaran') ? '' : 'selected' }}>-- Pilih Metode Pembayaran --</option>
+                <option value="BRI" {{ old('metode_pembayaran') == 'BRI' ? 'selected' : '' }}>Bank BRI</option>
+                <option value="DANA" {{ old('metode_pembayaran') == 'DANA' ? 'selected' : '' }}>DANA</option>
+                <option value="GoPay" {{ old('metode_pembayaran') == 'GoPay' ? 'selected' : '' }}>GoPay</option>
+            </select>
+            @error('metode_pembayaran')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="mb-4">
+            <label for="bukti_transfer" class="form-label">Upload Bukti Transfer</label>
+            <input class="form-control @error('bukti_transfer') is-invalid @enderror" type="file" id="bukti_transfer" name="bukti_transfer" accept="image/*" required>
+            @error('bukti_transfer')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary px-5 py-2 rounded-pill">
+                Kirim Donasi <i class="fa fa-heart ms-2"></i>
+            </button>
+        </div>
+    </form>
 </div>
-<!-- Donate End -->
-
-
 @endsection

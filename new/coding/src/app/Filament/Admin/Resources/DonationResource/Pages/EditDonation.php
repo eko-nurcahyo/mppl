@@ -3,17 +3,19 @@
 namespace App\Filament\Admin\Resources\DonationResource\Pages;
 
 use App\Filament\Admin\Resources\DonationResource;
-use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
+
+use Illuminate\Support\Facades\Mail;
+use App\Mail\DonationStatusUpdated;
 
 class EditDonation extends EditRecord
 {
     protected static string $resource = DonationResource::class;
 
-    protected function getHeaderActions(): array
+    protected function afterSave(): void
     {
-        return [
-            Actions\DeleteAction::make(),
-        ];
+        // Kirim email notifikasi status donasi ke user
+        Mail::to($this->record->email)
+            ->send(new DonationStatusUpdated($this->record));
     }
 }

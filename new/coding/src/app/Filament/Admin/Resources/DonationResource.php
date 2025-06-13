@@ -7,83 +7,66 @@ use App\Models\Donation;
 use Filament\Forms;
 use Filament\Resources\Resource;
 use Filament\Tables;
-use Filament\Forms\Form;
 use Filament\Tables\Table;
 
 class DonationResource extends Resource
 {
     protected static ?string $model = Donation::class;
+    protected static ?string $navigationIcon = 'heroicon-o-gift';
+    protected static ?string $navigationLabel = 'Donations';
+    protected static ?string $navigationGroup = 'Donations Management';
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-
-    public static function form(Form $form): Form
+    public static function form(Forms\Form $form): Forms\Form
     {
-        return $form
-            ->schema([
-                // Form Donasi, biasanya tidak perlu diedit dari admin
-            ]);
+        return $form->schema([
+            Forms\Components\TextInput::make('nama')->required()->label('Nama Donatur'),
+            Forms\Components\TextInput::make('email')->required()->email()->label('Email'),
+            Forms\Components\TextInput::make('nominal')->required()->numeric()->label('Nominal'),
+            Forms\Components\TextInput::make('metode_pembayaran')->label('Metode Pembayaran')->disabled(),
+            Forms\Components\Select::make('status')
+                ->options([
+                    'pending' => 'Pending',
+                    'approved' => 'Approved',
+                    'rejected' => 'Rejected',
+                ])
+                ->required()
+                ->label('Status'),
+            Forms\Components\Textarea::make('keterangan')->label('Catatan Admin'),
+            Forms\Components\FileUpload::make('bukti_transfer')
+                ->label('Bukti Transfer')
+                ->image()
+                ->disk('public')
+                ->directory('bukti-transfer')
+                ->disabled(),
+        ]);
     }
 
     public static function table(Table $table): Table
     {
-        return $table
-            ->columns([
-                Tables\Columns\TextColumn::make('nama')->label('Nama'),
-                Tables\Columns\TextColumn::make('email')->label('Email'),
-                Tables\Columns\TextColumn::make('nominal')->label('Nominal')->money('IDR'),
-                Tables\Columns\TextColumn::make('metode_pembayaran')->label('Metode Pembayaran'),
-                Tables\Columns\TextColumn::make('status')->label('Status')
-                    ->badge()
-                    ->color(fn ($state) => [
-                        'pending' => 'warning',
-                        'approved' => 'success',
-                        'rejected' => 'danger',
-                    ][$state] ?? 'secondary'),
-                Tables\Columns\ImageColumn::make('bukti_transfer')->label('Bukti Transfer')->disk('public'),
-                Tables\Columns\TextColumn::make('created_at')->label('Tanggal')->dateTime(),
-            ])
-            ->filters([])
-            ->actions([
-                Tables\Actions\Action::make('approve')
-                    ->label('Approve')
-                    ->visible(fn ($record) => $record->status === 'pending')
-                    ->color('success')
-                    ->icon('heroicon-o-check')
-                    ->action(function ($record) {
-                        $record->status = 'approved';
-                        $record->save();
-                        // TODO: Kirim email kwitansi jika perlu
-                    }),
-                Tables\Actions\Action::make('reject')
-                    ->label('Reject')
-                    ->visible(fn ($record) => $record->status === 'pending')
-                    ->color('danger')
-                    ->icon('heroicon-o-x')
-                    ->action(function ($record) {
-                        $record->status = 'rejected';
-                        $record->save();
-                        // TODO: Kirim email penolakan jika perlu
-                    }),
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
-            ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
-            ]);
-    }
-
-    public static function getRelations(): array
-    {
-        return [];
+        return $table->columns([
+            Tables\Columns\TextColumn::make('nama')->label('Nama')->searchable()->sortable(),
+            Tables\Columns\TextColumn::make('email')->label('Email')->searchable(),
+            Tables\Columns\TextColumn::make('nominal')->money('IDR')->label('Nominal'),
+            Tables\Columns\TextColumn::make('metode_pembayaran')->label('Metode Pembayaran'),
+            Tables\Columns\BadgeColumn::make('status')->label('Status')
+                ->colors([
+                    'warning' => 'pending',
+                    'success' => 'approved',
+                    'danger' => 'rejected',
+                ])->sortable(),
+            Tables\Columns\ImageColumn::make('bukti_transfer')->label('Bukti Transfer')->disk('public'),
+            Tables\Columns\TextColumn::make('created_at')->label('Tanggal')->dateTime()->sortable(),
+        ])->actions([
+            Tables\Actions\EditAction::make(),
+        ])->bulkActions([
+            Tables\Actions\DeleteBulkAction::make(),
+        ]);
     }
 
     public static function getPages(): array
     {
         return [
             'index' => Pages\ListDonations::route('/'),
-            'create' => Pages\CreateDonation::route('/create'),
             'edit' => Pages\EditDonation::route('/{record}/edit'),
         ];
     }
