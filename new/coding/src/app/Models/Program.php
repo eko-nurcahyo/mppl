@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Donation; // Tambahkan ini agar relasi Donation dikenali
 
 class Program extends Model
 {

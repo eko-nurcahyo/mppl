@@ -18,6 +18,9 @@ Route::view('/team', 'frontend.team')->name('team');
 Route::view('/testimonial', 'frontend.testimonial')->name('testimonial');
 Route::view('/contact', 'frontend.contact')->name('contact');
 Route::view('/404', 'frontend.404')->name('404');
+Route::get('/donations/create', [DonationController::class, 'create'])->name('donations.create');
+Route::post('/donations', [DonationController::class, 'store'])->name('donations.store');
+
 
 // Halaman dinamis daftar program donasi
 Route::get('/causes', [CauseController::class, 'index'])->name('causes');

@@ -35,28 +35,29 @@
                                 </div>
                                 <h5 class="mb-3">{{ $program->judul }}</h5>
                                 <p>{{ $program->deskripsi }}</p>
-                                <div class="causes-progress bg-white p-3 pt-2">
-                                    <div class="d-flex justify-content-between">
-                                        <p class="text-dark">
-                                            Rp{{ number_format($program->target,0,',','.') }} 
-                                            <small class="text-body">Goal</small>
-                                        </p>
-                                        <p class="text-dark">
-                                            Rp{{ number_format($program->total_raised ?? 0,0,',','.') }} 
-                                            <small class="text-body">Raised</small>
-                                        </p>
-                                    </div>
-                                    <div class="progress">
-                                        <div class="progress-bar"
-                                            role="progressbar"
-                                            style="width:{{ $program->progress_percent ?? 0 }}%;"
-                                            aria-valuenow="{{ $program->progress_percent ?? 0 }}" 
-                                            aria-valuemin="0" 
-                                            aria-valuemax="100">
-                                            <span>{{ round($program->progress_percent ?? 0) }}%</span>
-                                        </div>
-                                    </div>
-                                </div>
+                               <div class="causes-progress bg-white p-3 pt-2">
+    @php
+        $totalRaised = $program->donations()->where('status', 'approved')->sum('nominal');
+        $target = $program->target;
+        $percent = $target > 0 ? min(100, ($totalRaised / $target) * 100) : 0;
+    @endphp
+
+    <div class="d-flex justify-content-between">
+        <p class="text-dark">Rp{{ number_format($target, 0, ',', '.') }} <small class="text-body">Goal</small></p>
+        <p class="text-dark">Rp{{ number_format($totalRaised, 0, ',', '.') }} <small class="text-body">Raised</small></p>
+    </div>
+    <div class="progress">
+        <div class="progress-bar"
+             role="progressbar"
+             style="width: {{ $percent }}%;"
+             aria-valuenow="{{ $percent }}"
+             aria-valuemin="0"
+             aria-valuemax="100">
+             <span>{{ round($percent) }}%</span>
+        </div>
+    </div>
+</div>
+
                             </div>
                             <div class="position-relative mt-auto">
                                 <img class="img-fluid" src="{{ asset('storage/'.$program->gambar) }}" alt="{{ $program->judul }}">
