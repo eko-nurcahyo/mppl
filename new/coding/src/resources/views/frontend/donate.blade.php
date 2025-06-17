@@ -2,17 +2,38 @@
 @section('title', 'Donasi untuk ' . $program->judul)
 
 @section('content')
-
 <!-- HEADER -->
-<div class="container-fluid py-5 text-white" style="background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url('/assets/img/bg-header.jpg') center center / cover no-repeat;">
+<div class="container-fluid py-5 text-white" style="background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url('/assets/charitee/img/bg-header.jpg') center center / cover no-repeat;">
     <div class="container text-center">
-        <h1 class="fw-bold display-5 mb-0">Donasi untuk {{ strtoupper($program->judul) }}</h1>
+        <h1 class="fw-bold display-5 mb-0 text-uppercase text-wrap" style="font-size: 2.5rem;">
+            <span class="text-warning">{{ $program->judul }}</span>
+        </h1>
     </div>
 </div>
 
 <!-- DONASI CONTENT -->
 <div class="container my-5">
-    <div class="row g-4 align-items-start">
+    <div class="row g-4">
+        <!-- KISAH DI BALIK PROGRAM -->
+        <div class="col-md-10 offset-md-1">
+            <div class="bg-white p-4 rounded shadow-sm">
+                <h4 class="fw-bold text-center mb-3">Kisah di Balik Program Ini</h4>
+
+                @if($program->foto_kisah)
+                    <div class="text-center mb-3">
+                        <img src="{{ asset('storage/'.$program->foto_kisah) }}" alt="Foto Kisah" class="img-fluid rounded" style="max-height:400px; object-fit:cover;">
+                    </div>
+                @endif
+
+                @if($program->kisah)
+                    <div class="text-dark" style="line-height: 1.8;">
+                        {!! $program->kisah !!}
+                    </div>
+                @else
+                    <p class="text-muted text-center">Belum ada kisah ditambahkan untuk program ini.</p>
+                @endif
+            </div>
+        </div>
 
         <!-- KIRI: INFO PROGRAM -->
         <div class="col-lg-6">
@@ -51,15 +72,18 @@
                                 <input type="email" name="email" class="form-control" placeholder="Email Anda" required>
                             </div>
                             <div class="col-md-6">
-                                <input type="number" name="nominal" class="form-control" placeholder="Nominal Donasi (Rp)" required>
+                                <input type="number" name="nominal" class="form-control" placeholder="Nominal Donasi (Rp)" required max="{{ $program->target - $totalTerkumpul }}">
                             </div>
                             <div class="col-md-6">
-                                <select name="metode_pembayaran" class="form-select" required>
+                                <select name="metode_pembayaran" class="form-select" id="metodeSelect" required>
                                     <option value="" disabled selected>-- Pilih Metode Pembayaran --</option>
                                     <option value="BRI">Transfer Bank BRI</option>
                                     <option value="DANA">DANA</option>
                                     <option value="GoPay">GoPay</option>
                                 </select>
+                            </div>
+                            <div id="info-rekening" class="alert alert-info mt-2 d-none">
+                                <div id="rekening-detail"></div>
                             </div>
                             <div class="col-12">
                                 <label for="bukti_transfer" class="form-label fw-semibold text-muted small">Upload Bukti Transfer</label>
@@ -76,8 +100,49 @@
                 </div>
             </div>
         </div>
-
     </div>
 </div>
+
+@push('scripts')
+<script>
+    const metodeSelect = document.getElementById('metodeSelect');
+    const rekeningDiv = document.getElementById('info-rekening');
+    const rekeningDetail = document.getElementById('rekening-detail');
+
+    metodeSelect.addEventListener('change', function () {
+        const metode = this.value;
+        let html = '';
+
+        if (metode === 'BRI') {
+            html = `
+                <div class="text-center">
+                    <img src="/assets/charitee/img/BRI.png" alt="BRI" style="height:40px;" class="mb-2"><br>
+                    <strong>Atas Nama:</strong> EKO NUR CAHYO<br>
+                    <strong>No Rekening:</strong> <span class="text-danger">351868379736311836</span><br>
+                    <button class="btn btn-sm btn-outline-secondary mt-2" onclick="navigator.clipboard.writeText('351868379736311836')">Copy</button>
+                </div>`;
+        } else if (metode === 'DANA') {
+            html = `
+                <div class="text-center">
+                    <img src="/assets/charitee/img/logo-dana.png" alt="DANA" style="height:40px;" class="mb-2"><br>
+                    <strong>Atas Nama:</strong> EKO NUR CAHYO<br>
+                    <strong>No HP:</strong> <span class="text-danger">085812345678</span><br>
+                    <button class="btn btn-sm btn-outline-secondary mt-2" onclick="navigator.clipboard.writeText('085812345678')">Copy</button>
+                </div>`;
+        } else if (metode === 'GoPay') {
+            html = `
+                <div class="text-center">
+                    <img src="/assets/charitee/img/logo-gopay.png" alt="GoPay" style="height:40px;" class="mb-2"><br>
+                    <strong>Atas Nama:</strong> EKO NUR CAHYO<br>
+                    <strong>No HP:</strong> <span class="text-danger">085876543210</span><br>
+                    <button class="btn btn-sm btn-outline-secondary mt-2" onclick="navigator.clipboard.writeText('085876543210')">Copy</button>
+                </div>`;
+        }
+
+        rekeningDetail.innerHTML = html;
+        rekeningDiv.classList.remove('d-none');
+    });
+</script>
+@endpush
 
 @endsection

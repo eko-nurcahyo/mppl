@@ -3,15 +3,22 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Donation; // Tambahkan ini agar relasi Donation dikenali
 
 class Program extends Model
 {
     protected $fillable = [
-        'judul', 'deskripsi', 'target', 'tanggal_mulai', 'tanggal_akhir', 'gambar', 'status',
+        'judul',
+        'deskripsi',
+        'target',
+        'tanggal_mulai',
+        'tanggal_akhir',
+        'gambar',
+        'status',
+        'kisah',         // tambah jika sudah di database
+        'foto_kisah',    // tambah jika sudah di database
     ];
 
-    // Relasi ke donasi
+    // Relasi ke Donation
     public function donations()
     {
         return $this->hasMany(Donation::class);
