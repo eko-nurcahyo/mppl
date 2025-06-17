@@ -23,7 +23,7 @@
         <div class="container">
             <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
                 <div class="d-inline-block rounded-pill bg-secondary text-primary py-1 px-3 mb-3">Feature Causes</div>
-                <h1 class="display-6 mb-5">Every Child Deserves The Opportunity To Learn</h1>
+                <h2 class="section-title">Mari Ulurkan Tangan, Ringankan Beban Sesama</h2>
             </div>
             <div class="row g-4 justify-content-center">
                 @forelse($programs as $program)
