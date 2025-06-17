@@ -1,95 +1,83 @@
 @extends('layouts.app')
-@section('title', 'Donate | ChariTeam')
+@section('title', 'Donasi untuk ' . $program->judul)
 
 @section('content')
 
-    <!-- Page Header Start -->
-    <div class="container-fluid page-header mb-5 wow fadeIn" data-wow-delay="0.1s">
-        <div class="container text-center">
-            <h1 class="display-4 text-white animated slideInDown mb-4">Donate</h1>
-            <nav aria-label="breadcrumb animated slideInDown">
-                <ol class="breadcrumb justify-content-center mb-0">
-                    <li class="breadcrumb-item"><a class="text-white" href="{{ url('/') }}">Home</a></li>
-                    <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
-                    <li class="breadcrumb-item text-primary active" aria-current="page">Donate</li>
-                </ol>
-            </nav>
-        </div>
+<!-- HEADER -->
+<div class="container-fluid py-5 text-white" style="background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url('/assets/img/bg-header.jpg') center center / cover no-repeat;">
+    <div class="container text-center">
+        <h1 class="fw-bold display-5 mb-0">Donasi untuk {{ strtoupper($program->judul) }}</h1>
     </div>
-    <!-- Page Header End -->
+</div>
 
-    <!-- Donate Start -->
-   <!-- Donate Start -->
-<div class="container-fluid py-5">
-    <div class="container">
-        <div class="row g-5 align-items-center">
-            <!-- Kiri: Kata-kata Mutiara -->
-            <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
-                <div class="p-4 rounded shadow bg-white">
-                    <div class="d-inline-block rounded-pill bg-primary text-white py-1 px-3 mb-3">Mengapa Donasi?</div>
-                    <h2 class="mb-4">"Bersedekahlah, walau hanya dengan sebutir kurma."</h2>
-                    <p class="mb-3">Setiap kebaikan kecil akan dibalas berlipat ganda. Donasi Anda sangat berarti untuk perubahan besar di kehidupan orang lain.</p>
-                    <ul class="list-unstyled">
-                        <li><i class="fa fa-check-circle text-success me-2"></i>Donasi aman dan transparan</li>
-                        <li><i class="fa fa-check-circle text-success me-2"></i>Bukti transfer diverifikasi oleh admin</li>
-                        <li><i class="fa fa-check-circle text-success me-2"></i>Langsung membantu yang membutuhkan</li>
+<!-- DONASI CONTENT -->
+<div class="container my-5">
+    <div class="row g-4 align-items-start">
+
+        <!-- KIRI: INFO PROGRAM -->
+        <div class="col-lg-6">
+            <div class="card shadow-sm border-0">
+                <div class="card-body">
+                    <span class="badge bg-warning text-dark mb-2 fw-semibold"><i class="bi bi-info-circle-fill me-1"></i> Mengapa Donasi?</span>
+                    <h5 class="fw-bold">"Bersedekahlah, walau hanya dengan sebutir kurma."</h5>
+                    <p class="text-muted">Setiap kebaikan kecil akan dibalas berlipat ganda. Donasi Anda sangat berarti untuk perubahan besar di kehidupan orang lain.</p>
+                    <ul class="text-success small">
+                        <li><i class="bi bi-check-circle-fill me-1"></i> Donasi aman dan transparan</li>
+                        <li><i class="bi bi-check-circle-fill me-1"></i> Bukti transfer diverifikasi oleh admin</li>
+                        <li><i class="bi bi-check-circle-fill me-1"></i> Langsung membantu yang membutuhkan</li>
                     </ul>
+                    <hr>
+                    <p class="mb-1"><i class="bi bi-bullseye text-danger me-1"></i><strong>Target:</strong> Rp {{ number_format($program->target, 0, ',', '.') }}</p>
+                    <p><i class="bi bi-cash-coin text-warning me-1"></i><strong>Terkumpul:</strong> Rp {{ number_format($totalTerkumpul, 0, ',', '.') }}</p>
                 </div>
             </div>
+        </div>
 
-            <!-- Kanan: Form Donasi -->
-            <div class="col-lg-6 wow fadeIn" data-wow-delay="0.3s">
-                <div class="bg-secondary p-5 rounded">
-                    <form action="{{ route('donations.store') }}" method="POST" enctype="multipart/form-data">
+        <!-- KANAN: FORM -->
+        <div class="col-lg-6">
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-warning text-dark fw-bold">
+                    <i class="bi bi-heart-fill text-danger me-1"></i> Form Donasi
+                </div>
+                <div class="card-body">
+                    <form action="{{ route('donate.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
+                        <input type="hidden" name="program_id" value="{{ $program->id }}">
                         <div class="row g-3">
                             <div class="col-md-6">
-                                <div class="form-floating">
-                                    <input type="text" class="form-control bg-white border-0 shadow-sm" id="name" name="nama" placeholder="Nama Anda" required>
-                                    <label for="name">Nama Anda</label>
-                                </div>
+                                <input type="text" name="nama" class="form-control" placeholder="Nama Anda" required>
                             </div>
                             <div class="col-md-6">
-                                <div class="form-floating">
-                                    <input type="email" class="form-control bg-white border-0 shadow-sm" id="email" name="email" placeholder="Email Anda" required>
-                                    <label for="email">Email Anda</label>
-                                </div>
+                                <input type="email" name="email" class="form-control" placeholder="Email Anda" required>
                             </div>
                             <div class="col-md-6">
-                                <div class="form-floating">
-                                    <input type="number" class="form-control bg-white border-0 shadow-sm" id="nominal" name="nominal" placeholder="Nominal Donasi" required>
-                                    <label for="nominal">Nominal Donasi (Rp)</label>
-                                </div>
+                                <input type="number" name="nominal" class="form-control" placeholder="Nominal Donasi (Rp)" required>
                             </div>
                             <div class="col-md-6">
-                                <div class="form-floating">
-                                    <select class="form-select bg-white border-0 shadow-sm" id="metode" name="metode_pembayaran" required>
-                                        <option selected disabled>-- Pilih Metode Pembayaran --</option>
-                                        <option value="BRI">Transfer Bank BRI</option>
-                                        <option value="DANA">DANA</option>
-                                        <option value="GoPay">GoPay</option>
-                                    </select>
-                                    <label for="metode">Metode Pembayaran</label>
-                                </div>
+                                <select name="metode_pembayaran" class="form-select" required>
+                                    <option value="" disabled selected>-- Pilih Metode Pembayaran --</option>
+                                    <option value="BRI">Transfer Bank BRI</option>
+                                    <option value="DANA">DANA</option>
+                                    <option value="GoPay">GoPay</option>
+                                </select>
                             </div>
                             <div class="col-12">
-                                <label class="form-label fw-bold text-white">Upload Bukti Transfer</label>
-                                <input type="file" name="bukti_transfer" class="form-control bg-white border-0 shadow-sm" accept="image/*" required>
+                                <label for="bukti_transfer" class="form-label fw-semibold text-muted small">Upload Bukti Transfer</label>
+                                <input type="file" name="bukti_transfer" class="form-control" accept="image/*" required>
                             </div>
-                            <div class="col-12 text-center">
-                                <button type="submit" class="btn btn-primary w-75 py-3 rounded-pill">
-                                    Kirim Donasi <i class="fa fa-heart ms-2"></i>
+                            <div class="col-12 d-grid">
+                                <button type="submit" class="btn btn-warning text-dark fw-bold">
+                                    <i class="bi bi-send-fill me-1"></i> Kirim Donasi
                                 </button>
                             </div>
                         </div>
                     </form>
+                    <small class="text-muted d-block text-center mt-3">* Donasi akan diverifikasi oleh admin dalam waktu 1×24 jam.</small>
                 </div>
             </div>
-
         </div>
+
     </div>
 </div>
-<!-- Donate End -->
-
 
 @endsection

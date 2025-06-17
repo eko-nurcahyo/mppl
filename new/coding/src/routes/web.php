@@ -20,6 +20,11 @@ Route::view('/contact', 'frontend.contact')->name('contact');
 Route::view('/404', 'frontend.404')->name('404');
 Route::get('/donations/create', [DonationController::class, 'create'])->name('donations.create');
 Route::post('/donations', [DonationController::class, 'store'])->name('donations.store');
+// Tampilkan form donasi
+Route::get('/donations/create', [DonationController::class, 'create'])->name('donations.create');
+
+// Simpan data donasi
+Route::post('/donations', [DonationController::class, 'store'])->name('donations.store');
 
 
 // Halaman dinamis daftar program donasi
