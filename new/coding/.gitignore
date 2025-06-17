@@ -1,0 +1,20 @@
+# Laravel & Composer
+/vendor
+/node_modules
+/public/storage
+/storage/*.key
+.env
+.phpunit.result.cache
+
+# Laravel IDE Helper
+/.phpstorm.meta.php/
+/_ide_helper.php
+/_ide_helper_models.php
+
+# OS/File editor
+.DS_Store
+Thumbs.db
+*.sublime-workspace
+*.sublime-project
+.vscode
+.idea
