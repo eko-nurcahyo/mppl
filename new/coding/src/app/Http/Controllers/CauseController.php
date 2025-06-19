@@ -2,29 +2,35 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Models\Program;
 
 class CauseController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        // Ambil semua program dengan status 'aktif'
-        $programs = Program::where('status', 'aktif')->get();
+        $query = Program::query();
 
-        // Hitung total donasi dan persentase progress untuk setiap program
-        foreach ($programs as $program) {
-            // Total donasi yang sudah disetujui (approved)
-            $program->total_raised = $program->donations()
-                ->where('status', 'approved')
-                ->sum('nominal');
+        // Ambil filter dari URL (GET)
+        $wilayah = $request->get('wilayah');
+        $kategori = $request->get('kategori');
 
-            // Hitung persentase progress berdasarkan target
-            $program->progress_percent = $program->target > 0
-                ? min(100, ($program->total_raised / $program->target) * 100)
-                : 0;
+        // Filter jika ada pilihan
+        if ($wilayah) {
+            $query->where('wilayah', $wilayah);
         }
 
-        // Kirim data ke view 'frontend.causes'
-        return view('frontend.causes', compact('programs'));
+        if ($kategori) {
+            $query->where('kategori', $kategori);
+        }
+
+        // Ambil data untuk dropdown (unik)
+        $wilayahList = Program::select('wilayah')->distinct()->pluck('wilayah')->sort();
+        $kategoriList = Program::select('kategori')->distinct()->pluck('kategori')->sort();
+
+
+        $programs = $query->get();
+
+        return view('frontend.causes', compact('programs', 'wilayahList', 'kategoriList'));
     }
 }

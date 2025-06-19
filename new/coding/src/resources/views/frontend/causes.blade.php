@@ -3,81 +3,115 @@
 
 @section('content')
 
-    <!-- Page Header Start -->
-    <div class="container-fluid page-header mb-5 wow fadeIn" data-wow-delay="0.1s">
-        <div class="container text-center">
-            <h1 class="display-4 text-white animated slideInDown mb-4">Causes</h1>
-            <nav aria-label="breadcrumb animated slideInDown">
-                <ol class="breadcrumb justify-content-center mb-0">
-                    <li class="breadcrumb-item"><a class="text-white" href="{{ url('/') }}">Home</a></li>
-                    <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
-                    <li class="breadcrumb-item text-primary active" aria-current="page">Causes</li>
-                </ol>
-            </nav>
-        </div>
-    </div>
-    <!-- Page Header End -->
-
-    <!-- Causes Start -->
-    <div class="container-xxl py-5">
-        <div class="container">
-            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-                <div class="d-inline-block rounded-pill bg-secondary text-primary py-1 px-3 mb-3">Feature Causes</div>
-                <h2 class="section-title">Mari Ulurkan Tangan, Ringankan Beban Sesama</h2>
-            </div>
-            <div class="row g-4 justify-content-center">
-                @forelse($programs as $program)
-                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="causes-item d-flex flex-column bg-light border-top border-5 border-primary rounded-top overflow-hidden h-100">
-                            <div class="text-center p-4 pt-0">
-                                <div class="d-inline-block bg-primary text-white rounded-bottom fs-5 pb-1 px-3 mb-4">
-                                    <small>{{ $program->kategori ?? 'Donasi' }}</small>
-                                </div>
-                                <h5 class="mb-3">{{ $program->judul }}</h5>
-                                <p>{{ $program->deskripsi }}</p>
-                               <div class="causes-progress bg-white p-3 pt-2">
-    @php
-        $totalRaised = $program->donations()->where('status', 'approved')->sum('nominal');
-        $target = $program->target;
-        $percent = $target > 0 ? min(100, ($totalRaised / $target) * 100) : 0;
-    @endphp
-
-    <div class="d-flex justify-content-between">
-        <p class="text-dark">Rp{{ number_format($target, 0, ',', '.') }} <small class="text-body">Goal</small></p>
-        <p class="text-dark">Rp{{ number_format($totalRaised, 0, ',', '.') }} <small class="text-body">Raised</small></p>
-    </div>
-    <div class="progress">
-        <div class="progress-bar"
-             role="progressbar"
-             style="width: {{ $percent }}%;"
-             aria-valuenow="{{ $percent }}"
-             aria-valuemin="0"
-             aria-valuemax="100">
-             <span>{{ round($percent) }}%</span>
-        </div>
+<!-- Page Header Start -->
+<div class="container-fluid page-header mb-5 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container text-center">
+        <h1 class="display-4 text-white animated slideInDown mb-4">Causes</h1>
+        <nav aria-label="breadcrumb animated slideInDown">
+            <ol class="breadcrumb justify-content-center mb-0">
+                <li class="breadcrumb-item"><a class="text-white" href="{{ url('/') }}">Home</a></li>
+                <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
+                <li class="breadcrumb-item text-primary active" aria-current="page">Causes</li>
+            </ol>
+        </nav>
     </div>
 </div>
+<!-- Page Header End -->
 
+<!-- Causes Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+            <div class="d-inline-block rounded-pill bg-secondary text-primary py-1 px-3 mb-3">Feature Causes</div>
+            <h2 class="section-title">Mari Ulurkan Tangan, Ringankan Beban Sesama</h2>
+        </div>
+
+        <!-- Filter -->
+        <form method="GET" action="{{ route('causes') }}" class="d-flex justify-content-center gap-3 mb-4">
+            <select name="wilayah" onchange="this.form.submit()" class="form-select w-auto">
+                <option value="">Semua Pulau</option>
+                @foreach ($wilayahList as $wilayah)
+                    <option value="{{ $wilayah }}" {{ request('wilayah') == $wilayah ? 'selected' : '' }}>
+                        {{ $wilayah }}
+                    </option>
+                @endforeach
+            </select>
+
+            <select name="kategori" onchange="this.form.submit()" class="form-select w-auto">
+                <option value="">Semua Tema</option>
+                @foreach ($kategoriList as $kategori)
+                    <option value="{{ $kategori }}" {{ request('kategori') == $kategori ? 'selected' : '' }}>
+                        {{ $kategori }}
+                    </option>
+                @endforeach
+            </select>
+        </form>
+
+        <!-- List Program -->
+        <div class="row g-4 justify-content-center">
+            @forelse($programs as $program)
+                @php
+                    $colorMap = [
+                        'Sumatera' => 'text-danger',
+                        'Jawa' => 'text-primary',
+                        'Kalimantan' => 'text-success',
+                        'Sulawesi' => 'text-warning',
+                        'Bali & Nusa Tenggara' => 'text-info',
+                        'Maluku' => 'text-muted',
+                        'Papua' => 'text-dark',
+                    ];
+                @endphp
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="causes-item d-flex flex-column bg-light border-top border-5 border-primary rounded-top overflow-hidden h-100">
+                        <div class="text-center p-4 pt-0">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="badge bg-primary">{{ $program->kategori }}</span>
+                                <span class="fw-semibold small {{ $colorMap[$program->wilayah] ?? 'text-secondary' }}">
+                                    {{ $program->wilayah }}
+                                </span>
                             </div>
-                            <div class="position-relative mt-auto">
-                                <img class="img-fluid" src="{{ asset('storage/'.$program->gambar) }}" alt="{{ $program->judul }}">
-                                <div class="causes-overlay">
-                                    <a class="btn btn-outline-primary" href="{{ route('donate.show', ['program' => $program->id]) }}">
-                                        Donasi
-                                        <div class="d-inline-flex btn-sm-square bg-primary text-white rounded-circle ms-2">
-                                            <i class="fa fa-arrow-right"></i>
-                                        </div>
-                                    </a>
+                            <h5 class="mb-3">{{ $program->judul }}</h5>
+                            <p>{{ $program->deskripsi }}</p>
+                            <div class="causes-progress bg-white p-3 pt-2">
+                                <div class="d-flex justify-content-between">
+                                    <p class="text-dark">Rp{{ number_format($program->target_donasi, 0, ',', '.') }} <small class="text-body">Goal</small></p>
+                                    <p class="text-dark">Rp{{ number_format($program->total_raised, 0, ',', '.') }} <small class="text-body">Raised</small></p>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar"
+                                        role="progressbar"
+                                        style="width: {{ $program->progress_percent }}%;"
+                                        aria-valuenow="{{ $program->progress_percent }}"
+                                        aria-valuemin="0"
+                                        aria-valuemax="100">
+                                        <span>{{ round($program->progress_percent) }}%</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="position-relative mt-auto">
+                            @if($program->gambar)
+                                <img class="img-fluid" src="{{ asset('storage/'.$program->gambar) }}" alt="{{ $program->judul }}">
+                            @else
+                                <img class="img-fluid" src="{{ asset('images/default-donation.jpg') }}" alt="Default Gambar">
+                            @endif
+                            <div class="causes-overlay">
+                                <a class="btn btn-outline-primary" href="{{ route('donate.show', ['program' => $program->id]) }}">
+                                    Donasi
+                                    <div class="d-inline-flex btn-sm-square bg-primary text-white rounded-circle ms-2">
+                                        <i class="fa fa-arrow-right"></i>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                @empty
-                    <p class="text-center">Belum ada program donasi aktif.</p>
-                @endforelse
-            </div>
+                </div>
+            @empty
+                <p class="text-center">Belum ada program donasi aktif.</p>
+            @endforelse
         </div>
     </div>
-    <!-- Causes End -->
+</div>
+<!-- Causes End -->
 
 @endsection

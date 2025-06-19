@@ -6,7 +6,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DonationController;
 use App\Http\Controllers\CauseController;
 
-// Livewire routes (biarkan saja, ini untuk Livewire asset)
+// Livewire routes (biarkan tetap)
 Livewire::setUpdateRoute(fn($handle) => Route::post(config('app.asset_prefix') . '/livewire/update', $handle));
 Livewire::setScriptRoute(fn($handle) => Route::get(config('app.asset_prefix') . '/livewire/livewire.js', $handle));
 
@@ -18,24 +18,18 @@ Route::view('/team', 'frontend.team')->name('team');
 Route::view('/testimonial', 'frontend.testimonial')->name('testimonial');
 Route::view('/contact', 'frontend.contact')->name('contact');
 Route::view('/404', 'frontend.404')->name('404');
-Route::get('/donations/create', [DonationController::class, 'create'])->name('donations.create');
-Route::post('/donations', [DonationController::class, 'store'])->name('donations.store');
-// Tampilkan form donasi
-Route::get('/donations/create', [DonationController::class, 'create'])->name('donations.create');
 
-// Simpan data donasi
-Route::post('/donations', [DonationController::class, 'store'])->name('donations.store');
-
-
-// Halaman dinamis daftar program donasi
+// Halaman daftar program donasi (dengan filter)
 Route::get('/causes', [CauseController::class, 'index'])->name('causes');
 
-// Halaman form donasi dan proses simpan donasi
+// Halaman form donasi berdasarkan program
 Route::get('/donate/{program}', [DonationController::class, 'showDonate'])->name('donate.show');
+
+// Simpan donasi dari form
 Route::post('/donate', [DonationController::class, 'store'])->name('donate.store');
 
-// Route untuk submit contact form
+// Submit contact form
 Route::post('/contact', [ContactController::class, 'submit'])->name('contact.submit');
 
-// Fallback jika url tidak ditemukan
+// Fallback jika URL tidak ditemukan
 Route::fallback(fn() => view('frontend.404'));

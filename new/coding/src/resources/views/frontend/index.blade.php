@@ -12,14 +12,15 @@
                         <div class="container">
                             <div class="row justify-content-center">
                                 <div class="col-lg-7 pt-5">
-                                    <h1 class="display-4 text-white mb-3 animated slideInDown">Let's Change The World With Humanity</h1>
-                                    <p class="fs-5 text-white-50 mb-5 animated slideInDown">Aliqu diam amet diam et eos. Clita erat ipsum et lorem sed stet lorem sit clita duo justo erat amet</p>
-                                    <a class="btn btn-primary py-2 px-3 animated slideInDown" href="">
+                                    <h1 class="display-4 text-white mb-3 animated slideInDown">Mari Kita Ubah Dunia Dengan Kemanusiaan</h1>
+                                    <p class="fs-5 text-white-50 mb-5 animated slideInDown">Setiap donasi Anda membawa harapan baru bagi mereka yang membutuhkan. Bersama kita bisa wujudkan perubahan.</p>
+                                    <a class="btn btn-primary py-2 px-3 animated slideInDown" href="{{ url('/about') }}">
                                         Learn More
                                         <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
                                             <i class="fa fa-arrow-right"></i>
                                         </div>
                                     </a>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -31,14 +32,35 @@
                         <div class="container">
                             <div class="row justify-content-center">
                                 <div class="col-lg-7 pt-5">
-                                    <h1 class="display-4 text-white mb-3 animated slideInDown">Let's Save More Lifes With Our Helping Hand</h1>
-                                    <p class="fs-5 text-white-50 mb-5 animated slideInDown">Aliqu diam amet diam et eos. Clita erat ipsum et lorem sed stet lorem sit clita duo justo erat amet</p>
-                                    <a class="btn btn-primary py-2 px-3 animated slideInDown" href="">
+                                    <h1 class="display-4 text-white mb-3 animated slideInDown">Mari Kita Ubah Dunia Dengan Kemanusiaan</h1>
+                                    <p class="fs-5 text-white-50 mb-5 animated slideInDown">Setiap donasi Anda membawa harapan baru bagi mereka yang membutuhkan. Bersama kita bisa wujudkan perubahan.</p>
+                                    <a class="btn btn-primary py-2 px-3 animated slideInDown" href="{{ url('/about') }}">
                                         Learn More
                                         <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
                                             <i class="fa fa-arrow-right"></i>
                                         </div>
                                     </a>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="w-100" src="{{ asset('assets/charitee/img/carousel-2.jpg') }}" alt="Image">
+                    <div class="carousel-caption">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-7 pt-5">
+                                    <h1 class="display-4 text-white mb-3 animated slideInDown">JANCOK</h1>
+                                    <p class="fs-5 text-white-50 mb-5 animated slideInDown">Setiap donasi Anda membawa harapan baru bagi mereka yang membutuhkan. Bersama kita bisa wujudkan perubahan.</p>
+                                    <a class="btn btn-primary py-2 px-3 animated slideInDown" href="{{ url('/about') }}">
+                                        Learn More
+                                        <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
+                                            <i class="fa fa-arrow-right"></i>
+                                        </div>
+                                    </a>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -382,42 +404,6 @@
     <!-- Team End -->
 
 
-    <!-- Testimonial Start -->
-    <div class="container-xxl py-5">
-        <div class="container">
-            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-                <div class="d-inline-block rounded-pill bg-secondary text-primary py-1 px-3 mb-3">Testimonial</div>
-                <h1 class="display-6 mb-5">Trusted By Thousands Of People And Nonprofits</h1>
-            </div>
-            <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
-                <div class="testimonial-item text-center">
-                    <img class="img-fluid bg-light rounded-circle p-2 mx-auto mb-4" src="{{ asset('assets/charitee/img/testimonial-1.jpg') }}" style="width: 100px; height: 100px;">
-                    <div class="testimonial-text rounded text-center p-4">
-                        <p>Clita clita tempor justo dolor ipsum amet kasd amet duo justo duo duo labore sed sed. Magna ut diam sit et amet stet eos sed clita erat magna elitr erat sit sit erat at rebum justo sea clita.</p>
-                        <h5 class="mb-1">Doner Name</h5>
-                        <span class="fst-italic">Profession</span>
-                    </div>
-                </div>
-                <div class="testimonial-item text-center">
-                    <img class="img-fluid bg-light rounded-circle p-2 mx-auto mb-4" src="{{ asset('assets/charitee/img/testimonial-2.jpg') }}" style="width: 100px; height: 100px;" alt="Testimonial 1">
-                    <div class="testimonial-text rounded text-center p-4">
-                        <p>Clita clita tempor justo dolor ipsum amet kasd amet duo justo duo duo labore sed sed. Magna ut diam sit et amet stet eos sed clita erat magna elitr erat sit sit erat at rebum justo sea clita.</p>
-                        <h5 class="mb-1">Doner Name</h5>
-                        <span class="fst-italic">Profession</span>
-                    </div>
-                </div>
-                <div class="testimonial-item text-center">
-                    <img class="img-fluid bg-light rounded-circle p-2 mx-auto mb-4" src="{{ asset('assets/charitee/img/testimonial-3.jpg') }}" style="width: 100px; height: 100px;" alt="Testimonial 1">
-                    <div class="testimonial-text rounded text-center p-4">
-                        <p>Clita clita tempor justo dolor ipsum amet kasd amet duo justo duo duo labore sed sed. Magna ut diam sit et amet stet eos sed clita erat magna elitr erat sit sit erat at rebum justo sea clita.</p>
-                        <h5 class="mb-1">Doner Name</h5>
-                        <span class="fst-italic">Profession</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Testimonial End -->
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>

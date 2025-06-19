@@ -36,7 +36,7 @@
                             <p class="text-dark mb-2">“Ribuan anak di pelosok Indonesia masih menunggu uluran tangan kita. Satu donasi dari Anda bisa jadi makan hari ini, sekolah besok, dan harapan masa depan.”
 
 </p>
-                            <span class="text-primary">Jhon Doe, Founder</span>
+                            <span class="text-primary">Eko Nur Cahyo, Founder</span>
                         </div>
                         <a class="btn btn-primary py-2 px-3 me-3" href="">
                             Learn More
@@ -116,7 +116,7 @@
         <div class="container">
             <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
                 <div class="d-inline-block rounded-pill bg-secondary text-primary py-1 px-3 mb-3">Team Members</div>
-                <h1 class="display-6 mb-5">Mari Selamatkan Lebih Banyak Nyawa dengan Tangan Kita</h1>
+                <h1 class="display-6 mb-5">Kenali Tim Hebat di Balik Aksi Kemanusiaan Kita</h1>
             </div>
             <div class="row g-4 justify-content-center ">
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
@@ -125,12 +125,13 @@
                             <img class="img-fluid" src="{{ asset('assets/charitee/img/team-1.jpg') }}" alt="">
                         </div>
                         <div class="team-text bg-light text-center p-4">
-                            <h5>Full Name</h5>
+                            <h5>Eko NurCahyo</h5>
                             <p class="text-primary">Designation</p>
                             <div class="team-social text-center">
-                                <a class="btn btn-square" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-twitter"></i></a>
                                 <a class="btn btn-square" href=""><i class="fab fa-instagram"></i></a>
+                                <a class="btn btn-square" href="https://wa.me/+6281913339357" target="_blank">
+                                    <i class="fab fa-whatsapp"></i>
+                                  </a> 
                             </div>
                         </div>
                     </div>
@@ -141,12 +142,13 @@
                             <img class="img-fluid" src="{{ asset('assets/charitee/img/team-2.jpg') }}" alt="">
                         </div>
                         <div class="team-text bg-light text-center p-4">
-                            <h5>Full Name</h5>
+                            <h5>Fiqri Fathurrohman</h5>
                             <p class="text-primary">Designation</p>
                             <div class="team-social text-center">
-                                <a class="btn btn-square" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-twitter"></i></a>
                                 <a class="btn btn-square" href=""><i class="fab fa-instagram"></i></a>
+                                <a class="btn btn-square" href="https://wa.me/+6282114151478" target="_blank">
+                                    <i class="fab fa-whatsapp"></i>
+                                  </a>
                             </div>
                         </div>
                     </div>
@@ -157,12 +159,13 @@
                             <img class="img-fluid" src="{{ asset('assets/charitee/img/team-3.jpg') }}" alt="">
                         </div>
                         <div class="team-text bg-light text-center p-4">
-                            <h5>Full Name</h5>
+                            <h5>Alfin Khalaj Syahruwardi</h5>
                             <p class="text-primary">Designation</p>
                             <div class="team-social text-center">
-                                <a class="btn btn-square" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-twitter"></i></a>
                                 <a class="btn btn-square" href=""><i class="fab fa-instagram"></i></a>
+                                <a class="btn btn-square" href="https://wa.me/+62895379520899" target="_blank">
+                                    <i class="fab fa-whatsapp"></i>
+                                  </a>
                             </div>
                         </div>
                     </div>
