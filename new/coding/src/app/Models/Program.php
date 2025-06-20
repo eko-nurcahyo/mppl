@@ -9,16 +9,15 @@ class Program extends Model
     protected $fillable = [
         'judul',
         'deskripsi',
-        'target',
+        'target_donasi',     // <- disesuaikan dengan Blade
         'tanggal_mulai',
         'tanggal_akhir',
         'gambar',
         'status',
-        'kisah',         // tambah jika sudah di database
-        'foto_kisah',    // tambah jika sudah di database
+        'kisah',
+        'foto_kisah',
     ];
 
-    // Relasi ke Donation
     public function donations()
     {
         return $this->hasMany(Donation::class);

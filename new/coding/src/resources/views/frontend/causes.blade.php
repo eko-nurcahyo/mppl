@@ -60,6 +60,7 @@
                         'Maluku' => 'text-muted',
                         'Papua' => 'text-dark',
                     ];
+                    $progress = $program->target > 0 ? ($program->total_raised / $program->target) * 100 : 0;
                 @endphp
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="causes-item d-flex flex-column bg-light border-top border-5 border-primary rounded-top overflow-hidden h-100">
@@ -74,17 +75,17 @@
                             <p>{{ $program->deskripsi }}</p>
                             <div class="causes-progress bg-white p-3 pt-2">
                                 <div class="d-flex justify-content-between">
-                                    <p class="text-dark">Rp{{ number_format($program->target_donasi, 0, ',', '.') }} <small class="text-body">Goal</small></p>
+                                    <p class="text-dark">Rp{{ number_format($program->target, 0, ',', '.') }} <small class="text-body">Goal</small></p>
                                     <p class="text-dark">Rp{{ number_format($program->total_raised, 0, ',', '.') }} <small class="text-body">Raised</small></p>
                                 </div>
                                 <div class="progress">
-                                    <div class="progress-bar"
-                                        role="progressbar"
-                                        style="width: {{ $program->progress_percent }}%;"
-                                        aria-valuenow="{{ $program->progress_percent }}"
-                                        aria-valuemin="0"
-                                        aria-valuemax="100">
-                                        <span>{{ round($program->progress_percent) }}%</span>
+                                    <div class="progress-bar bg-success"
+                                         role="progressbar"
+                                         style="width: {{ round($progress) }}%;"
+                                         aria-valuenow="{{ round($progress) }}"
+                                         aria-valuemin="0"
+                                         aria-valuemax="100">
+                                        <span>{{ round($progress) }}%</span>
                                     </div>
                                 </div>
                             </div>

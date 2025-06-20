@@ -37,18 +37,34 @@ class DonationController extends Controller
         ]);
 
         // Kirim email notifikasi donasi sedang diproses
-        Mail::to($donation->email)->send(new DonationPendingMail($donation));
+        // *Jika error email, silakan disable saat local dev*
+        try {
+            Mail::to($donation->email)->send(new DonationPendingMail($donation));
+        } catch (\Exception $e) {
+            // log error atau abaikan jika smtp offline
+        }
 
         // Redirect ke halaman causes dengan pesan sukses
         return redirect()->route('causes')->with('success', 'Donasi berhasil dikirim, menunggu verifikasi admin.');
     }
 
-    public function showDonate($programId)
-{
-    $program = Program::findOrFail($programId);
-    $totalTerkumpul = $program->donations()->where('status', 'approved')->sum('nominal');
+    public function show($id)
+    {
+        $program = Program::findOrFail($id);
 
-    return view('frontend.donate', compact('program', 'totalTerkumpul'));
+        // Gunakan relasi yang benar: donations() bukan donasi()
+        $totalTerkumpul = $program->donations()->sum('nominal');
+
+        $progressPercent = ($program->target_donasi > 0)
+            ? min(100, ($totalTerkumpul / $program->target_donasi) * 100)
+            : 0;
+
+        return view('frontend.donate', [
+            'program' => $program,
+            'totalTerkumpul' => $totalTerkumpul,
+            'progressPercent' => $progressPercent
+        ]);
 }
+
 
 }
