@@ -10,6 +10,12 @@ use Illuminate\Support\Facades\Mail;
 
 class DonationController extends Controller
 {
+    public function showDonate()
+    {
+        // Misalnya kamu punya halaman donasi umum (tanpa program tertentu)
+        return view('frontend.donate-general'); // Ganti dengan view yang sesuai
+    }
+
     public function store(Request $request)
     {
         // Validasi input dari form donasi
@@ -37,7 +43,6 @@ class DonationController extends Controller
         ]);
 
         // Kirim email notifikasi donasi sedang diproses
-        // *Jika error email, silakan disable saat local dev*
         try {
             Mail::to($donation->email)->send(new DonationPendingMail($donation));
         } catch (\Exception $e) {
@@ -64,7 +69,5 @@ class DonationController extends Controller
             'totalTerkumpul' => $totalTerkumpul,
             'progressPercent' => $progressPercent
         ]);
-}
-
-
+    }
 }

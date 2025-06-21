@@ -12,14 +12,14 @@ class ProgramSeeder extends Seeder
     {
         $programsByWilayah = [
             'Sumatera' => [
-                ['Renovasi Sekolah Dasar Pelosok', 'Padang', 'Pendidikan'],
-                ['Bantuan Seragam Anak Kurang Mampu', 'Medan', 'Pendidikan'],
-                ['Sumur Bor Daerah Riau', 'Pekanbaru', 'Air Bersih'],
-                ['Instalasi Pipa Bersih', 'Bengkulu', 'Air Bersih'],
-                ['Evakuasi Korban Banjir', 'Palembang', 'Bencana Alam'],
-                ['Bantuan Korban Longsor', 'Bukittinggi', 'Bencana Alam'],
-                ['Pembangunan Perpustakaan Mini', 'Jambi', 'Pendidikan'],
-                ['Air Bersih untuk Dusun Terpencil', 'Banda Aceh', 'Air Bersih'],
+                ['Renovasi Sekolah Dasar Pelosok', 'Padang', 'Pendidikan',10000000,'PENDIDIKAN.png'],
+                ['Bantuan Seragam Anak Kurang Mampu', 'Medan', 'Pendidikan',20000000],
+                ['Sumur Bor Daerah Riau', 'Pekanbaru', 'Air Bersih',30000000],
+                ['Instalasi Pipa Bersih', 'Bengkulu', 'Air Bersih',40000000],
+                ['Evakuasi Korban Banjir', 'Palembang', 'Bencana Alam',50000000],
+                ['Bantuan Korban Longsor', 'Bukittinggi', 'Bencana Alam',60000000],
+                ['Pembangunan Perpustakaan Mini', 'Jambi', 'Pendidikan',70000000],
+                ['Air Bersih untuk Dusun Terpencil', 'Banda Aceh', 'Air Bersih',80000000],
                 ['Bantuan Gempa Aceh', 'Lhokseumawe', 'Bencana Alam'],
                 ['Renovasi Sekolah Rusak', 'Tanjung Pinang', 'Pendidikan'],
             ],
@@ -70,7 +70,7 @@ class ProgramSeeder extends Seeder
                 ['Banjir Pulau Seram', 'Namlea', 'Bencana Alam'],
             ],
             'Papua' => [
-                ['Rumah Belajar Papua', 'Jayapura', 'Pendidikan'],
+                ['Rumah Belajar Papua', 'Jayapura', 'Pendidikan',],
                 ['Air Bersih Pegunungan', 'Timika', 'Air Bersih'],
                 ['Longsor Distrik Gunung', 'Nabire', 'Bencana Alam'],
                 ['Gempa Papua Barat', 'Manokwari', 'Bencana Alam'],
@@ -80,19 +80,26 @@ class ProgramSeeder extends Seeder
         $i = 1;
 
         foreach ($programsByWilayah as $wilayah => $programs) {
-            foreach ($programs as [$judul, $kota, $kategori]) {
-                Program::create([
-                    'judul' => $judul,
-                    'slug' => Str::slug($judul . '-' . $i),
-                    'kategori' => $kategori,
-                    'wilayah' => $wilayah, // ✅ Ini penting
-                    'kota' => $kota,
-                    'target_donasi' => rand(50000000, 300000000),
-                    'status' => 'aktif',
-                    'deskripsi' => 'Program bantuan untuk kategori ' . strtolower($kategori) . ' di wilayah ' . $kota . '.',
-                ]);
-                $i++;
+            foreach ($programs as $index => $data) {
+                [$judul, $kota, $kategori, $target, $gambar] = array_pad($data, 5, null); // gambar optional
+        
+                Program::updateOrCreate(
+                    ['slug' => Str::slug($judul)],
+                    [
+                        'judul' => $judul,
+                        'slug' => Str::slug($judul),
+                        'kategori' => $kategori,
+                        'wilayah' => $wilayah,
+                        'kota' => $kota,
+                        'target_donasi' => $target ?? 100000000, // fallback jika kosong
+                        'status' => 'aktif',
+                        'gambar' => $gambar ? "assets/charitee/img/program/{$gambar}" : null,
+                        'deskripsi' => 'Program bantuan untuk kategori ' . strtolower($kategori) . ' di wilayah ' . $kota . '.',
+                    ]
+                );
             }
         }
+        
+        
     }
 }
