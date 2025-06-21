@@ -1,12 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="id">
 <head>
-    <meta charset="utf-8">
-    <title>@yield('title', 'ChariTeam - Free Nonprofit Website Template')</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>@yield('title', config('app.name'))</title>
 
     <!-- Favicon -->
     <link href="{{ asset('assets/charitee/img/favicon.ico') }}" rel="icon">
@@ -14,7 +12,7 @@
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Saira:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&display=swap" rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
@@ -29,27 +27,24 @@
 
     <!-- Template Stylesheet -->
     <link href="{{ asset('assets/charitee/css/style.css') }}" rel="stylesheet">
-
-    @stack('styles')
 </head>
-
 <body>
+
     <!-- Spinner Start -->
     <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-        <div class="spinner-grow text-primary" role="status"></div>
+        <div class="spinner-border text-primary" role="status"></div>
     </div>
     <!-- Spinner End -->
 
     <!-- Navbar Start -->
-    @include('partials.navbar')
+    @include('frontend.partials.navbar')
     <!-- Navbar End -->
 
-    <!-- Content -->
+    <!-- Main Content -->
     @yield('content')
-    <!-- Content End -->
 
     <!-- Footer Start -->
-    @include('partials.footer')
+    @include('frontend.partials.footer')
     <!-- Footer End -->
 
     <!-- Back to Top -->
@@ -61,12 +56,10 @@
     <script src="{{ asset('assets/charitee/lib/wow/wow.min.js') }}"></script>
     <script src="{{ asset('assets/charitee/lib/easing/easing.min.js') }}"></script>
     <script src="{{ asset('assets/charitee/lib/waypoints/waypoints.min.js') }}"></script>
+    <script src="{{ asset('assets/charitee/lib/counterup/counterup.min.js') }}"></script>
     <script src="{{ asset('assets/charitee/lib/owlcarousel/owl.carousel.min.js') }}"></script>
-    <script src="{{ asset('assets/charitee/lib/parallax/parallax.min.js') }}"></script>
 
     <!-- Template Javascript -->
     <script src="{{ asset('assets/charitee/js/main.js') }}"></script>
-    @stack('scripts')
 </body>
-
 </html>

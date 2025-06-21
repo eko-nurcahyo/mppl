@@ -15,6 +15,8 @@ class ProgramResource extends Resource
 {
     protected static ?string $model = Program::class;
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationLabel = 'Program Donasi';
+    protected static ?string $navigationGroup = 'Donasi';
 
     public static function form(Form $form): Form
     {
@@ -24,9 +26,24 @@ class ProgramResource extends Resource
                 ->required()
                 ->maxLength(255),
 
-            Forms\Components\TextInput::make('target')
+            Forms\Components\TextInput::make('slug')
+                ->label('Slug (Opsional)')
+                ->placeholder('Otomatis dari judul jika dikosongkan')
+                ->maxLength(255)
+                ->helperText('Biarkan kosong jika ingin dibuat otomatis.')
+                ->dehydrated(false),
+
+            Forms\Components\TextInput::make('target_donasi')
                 ->label('Target Donasi (Rp)')
                 ->numeric()
+                ->required(),
+
+            Forms\Components\TextInput::make('wilayah')
+                ->label('Wilayah')
+                ->required(),
+
+            Forms\Components\TextInput::make('kota')
+                ->label('Kota')
                 ->required(),
 
             RichEditor::make('kisah')
@@ -49,6 +66,7 @@ class ProgramResource extends Resource
             Forms\Components\DatePicker::make('tanggal_mulai')
                 ->label('Tanggal Mulai')
                 ->required(),
+
             Forms\Components\DatePicker::make('tanggal_akhir')
                 ->label('Tanggal Akhir')
                 ->required(),
@@ -58,7 +76,7 @@ class ProgramResource extends Resource
                 ->image()
                 ->directory('programs')
                 ->maxSize(10240)
-                ->required(),
+                ->nullable(),
 
             Forms\Components\Select::make('status')
                 ->label('Status')
@@ -68,6 +86,16 @@ class ProgramResource extends Resource
                 ])
                 ->default('aktif')
                 ->required(),
+
+                Forms\Components\Select::make('kategori')
+                ->label('Kategori')
+                ->options([
+                    'Pendidikan' => 'Pendidikan',
+                    'Air Bersih' => 'Air Bersih',
+                    'Bencana Alam' => 'Bencana Alam',
+                ])
+                ->required(),
+            
         ]);
     }
 
@@ -75,7 +103,11 @@ class ProgramResource extends Resource
     {
         return $table->columns([
             Tables\Columns\TextColumn::make('judul')->label('Judul')->searchable()->sortable(),
-            Tables\Columns\TextColumn::make('target')->label('Target')->money('IDR'),
+            Tables\Columns\TextColumn::make('slug')->label('Slug')->toggleable(),
+            Tables\Columns\TextColumn::make('kategori')->label('Kategori')->sortable(),
+            Tables\Columns\TextColumn::make('wilayah')->label('Wilayah')->sortable(),
+            Tables\Columns\TextColumn::make('kota')->label('Kota')->sortable(),
+            Tables\Columns\TextColumn::make('target_donasi')->label('Target')->money('IDR')->sortable(),
             Tables\Columns\TextColumn::make('tanggal_mulai')->label('Mulai')->date(),
             Tables\Columns\TextColumn::make('tanggal_akhir')->label('Akhir')->date(),
             Tables\Columns\ImageColumn::make('gambar')->label('Banner'),

@@ -22,7 +22,7 @@
 
                 @if($program->foto_kisah)
                     <div class="text-center mb-3">
-                        <img src="{{ asset('storage/'.$program->foto_kisah) }}" alt="Foto Kisah" class="img-fluid rounded" style="max-height:400px; object-fit:cover;">
+                        <img src="{{ asset($program->foto_kisah) }}" alt="Foto Kisah {{ $program->judul }}" class="img-fluid rounded" style="max-height:400px; object-fit:cover;">
                     </div>
                 @endif
 
@@ -56,9 +56,8 @@
                         $progress = ($target > 0) ? min(100, ($raised / $target) * 100) : 0;
                     @endphp
 
-                    <p class="mb-1"><i class="bi bi-bullseye text-danger me-1"><strong>Target:</strong> Rp{{ number_format($program->target_donasi, 0, ',', '.') }}
-
-                    <p><i class="bi bi-cash-coin text-warning me-1"></i><strong>Terkumpul:</strong> Rp{{ number_format($raised, 0, ',', '.') }}</p>
+                    <p class="mb-1"><strong>Target:</strong> Rp{{ number_format($target, 0, ',', '.') }}</p>
+                    <p><strong>Terkumpul:</strong> Rp{{ number_format($raised, 0, ',', '.') }}</p>
 
                     <div class="progress mt-2">
                         <div class="progress-bar bg-success"
@@ -134,11 +133,11 @@
         let html = '';
 
         if (metode === 'BRI') {
-            html = `<div class="text-center"><img src="/assets/charitee/img/BRI.png" alt="BRI" style="height:40px;" class="mb-2"><br><strong>Atas Nama:</strong> EKO NUR CAHYO<br><strong>No Rekening:</strong> <span class="text-danger">351868379736311836</span><br><button class="btn btn-sm btn-outline-secondary mt-2" onclick="navigator.clipboard.writeText('351868379736311836')">Copy</button></div>`;
+            html = <div class="text-center"><img src="/assets/charitee/img/BRI.png" alt="BRI" style="height:40px;" class="mb-2"><br><strong>Atas Nama:</strong> EKO NUR CAHYO<br><strong>No Rekening:</strong> <span class="text-danger">351868379736311836</span><br><button class="btn btn-sm btn-outline-secondary mt-2" onclick="navigator.clipboard.writeText('351868379736311836')">Copy</button></div>;
         } else if (metode === 'DANA') {
-            html = `<div class="text-center"><img src="/assets/charitee/img/logo-dana.png" alt="DANA" style="height:40px;" class="mb-2"><br><strong>Atas Nama:</strong> EKO NUR CAHYO<br><strong>No HP:</strong> <span class="text-danger">085812345678</span><br><button class="btn btn-sm btn-outline-secondary mt-2" onclick="navigator.clipboard.writeText('085812345678')">Copy</button></div>`;
+            html = <div class="text-center"><img src="/assets/charitee/img/logo-dana.png" alt="DANA" style="height:40px;" class="mb-2"><br><strong>Atas Nama:</strong> EKO NUR CAHYO<br><strong>No HP:</strong> <span class="text-danger">085812345678</span><br><button class="btn btn-sm btn-outline-secondary mt-2" onclick="navigator.clipboard.writeText('085812345678')">Copy</button></div>;
         } else if (metode === 'GoPay') {
-            html = `<div class="text-center"><img src="/assets/charitee/img/logo-gopay.png" alt="GoPay" style="height:40px;" class="mb-2"><br><strong>Atas Nama:</strong> EKO NUR CAHYO<br><strong>No HP:</strong> <span class="text-danger">085876543210</span><br><button class="btn btn-sm btn-outline-secondary mt-2" onclick="navigator.clipboard.writeText('085876543210')">Copy</button></div>`;
+            html = <div class="text-center"><img src="/assets/charitee/img/logo-gopay.png" alt="GoPay" style="height:40px;" class="mb-2"><br><strong>Atas Nama:</strong> EKO NUR CAHYO<br><strong>No HP:</strong> <span class="text-danger">085876543210</span><br><button class="btn btn-sm btn-outline-secondary mt-2" onclick="navigator.clipboard.writeText('085876543210')">Copy</button></div>;
         }
 
         rekeningDetail.innerHTML = html;

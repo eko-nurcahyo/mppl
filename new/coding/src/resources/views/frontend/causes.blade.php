@@ -94,7 +94,7 @@
                         </div>
                         <div class="position-relative mt-auto">
                             @if($program->gambar)
-                                <img class="img-fluid" src="{{ asset($program->gambar) }}" alt="{{ $program->judul }}">
+                                <img class="img-fluid" src="{{ asset('storage/' . $program->gambar) }}" alt="{{ $program->judul }}">
                             @else
                                 <img class="img-fluid" src="{{ asset('images/default-donation.jpg') }}" alt="Default Gambar">
                             @endif

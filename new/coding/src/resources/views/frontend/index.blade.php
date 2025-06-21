@@ -8,7 +8,7 @@
         <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                        <img class="w-100" src="{{ asset('assets/charitee/img/carousel-1.jpg') }}" alt="Image">                    <div class="carousel-caption">
+                        <img class="w-100" src="{{ asset('assets/charitee/img/gmbr/PENDIDIKAN.png') }}" alt="Image">                    <div class="carousel-caption">
                         <div class="container">
                             <div class="row justify-content-center">
                                 <div class="col-lg-7 pt-5">
@@ -27,7 +27,7 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img class="w-100" src="{{ asset('assets/charitee/img/carousel-2.jpg') }}" alt="Image">
+                    <img class="w-100" src="{{ asset('assets/charitee/img/gmbr/AIRBERSIH.png') }}" alt="Image">
                     <div class="carousel-caption">
                         <div class="container">
                             <div class="row justify-content-center">
@@ -47,12 +47,12 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img class="w-100" src="{{ asset('assets/charitee/img/carousel-2.jpg') }}" alt="Image">
+                    <img class="w-100" src="{{ asset('assets/charitee/img/gmbr/BENCANAALAM.png') }}" alt="Image">
                     <div class="carousel-caption">
                         <div class="container">
                             <div class="row justify-content-center">
                                 <div class="col-lg-7 pt-5">
-                                    <h1 class="display-4 text-white mb-3 animated slideInDown">JANCOK</h1>
+                                    <h1 class="display-4 text-white mb-3 animated slideInDown">Mari Kita Ubah Dunia Dengan Kemanusiaan</h1>
                                     <p class="fs-5 text-white-50 mb-5 animated slideInDown">Setiap donasi Anda membawa harapan baru bagi mereka yang membutuhkan. Bersama kita bisa wujudkan perubahan.</p>
                                     <a class="btn btn-primary py-2 px-3 animated slideInDown" href="{{ url('/about') }}">
                                         Learn More
@@ -95,12 +95,12 @@
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="h-100">
                         <div class="d-inline-block rounded-pill bg-secondary text-primary py-1 px-3 mb-3">About Us</div>
-                        <h1 class="display-6 mb-5">We Help People In Need Around The World</h1>
+                        <h1 class="display-6 mb-5">Bersama Anda, Kami Bantu Mereka yang Membutuhkan di Seluruh Indonesia</h1>
                         <div class="bg-light border-bottom border-5 border-primary rounded p-4 mb-4">
-                            <p class="text-dark mb-2">Aliqu diam amet diam et eos. Clita erat ipsum et lorem sed stet lorem sit clita duo justo erat amet</p>
+                            <p class="text-dark mb-2">Kami percaya bahwa setiap kebaikan, sekecil apa pun, dapat membawa perubahan besar. Dengan donasi Anda, kami hadir untuk membantu masyarakat yang membutuhkan di berbagai daerah, dari kota hingga pelosok negeri, di seluruh Indonesia.</p>
                             <span class="text-primary">Jhon Doe, Founder</span>
                         </div>
-                        <p class="mb-5">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
+                        <p class="mb-5">Indonesia adalah rumah bagi jutaan harapan. Melalui semangat gotong royong, kita dapat menjangkau saudara-saudara kita di seluruh penjuru tanah air. Bersama, kita bangun masa depan yang lebih baik untuk semua.</p>
                         <a class="btn btn-primary py-2 px-3 me-3" href="">
                             Learn More
                             <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
@@ -233,113 +233,60 @@
     </div>
     <!-- Causes End -->
 
-
-    <!-- Service Start -->
-    <div class="container-xxl py-5">
-        <div class="container">
-            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-                <div class="d-inline-block rounded-pill bg-secondary text-primary py-1 px-3 mb-3">What We Do</div>
-                <h1 class="display-6 mb-5">Learn More What We Do And Get Involved</h1>
+<!-- Service Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+            <div class="d-inline-block rounded-pill bg-secondary text-primary py-1 px-3 mb-3">Apa yang Kami Lakukan</div>
+            <h1 class="display-6 mb-5">Pelajari Lebih Lanjut Apa yang Kami Lakukan dan Terlibat</h1>
+        </div>
+        <div class="row g-4 justify-content-center">
+            <!-- Pendidikan -->
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="service-item bg-white text-center h-100 p-4 p-xl-5">
+                    <i class="fa fa-graduation-cap fa-3x text-primary mb-4"></i>
+                    <h4 class="mb-3">Pendidikan Anak</h4>
+                    <p class="mb-4">Kami mendukung akses pendidikan berkualitas bagi anak-anak di seluruh Indonesia, terutama di wilayah kurang terjangkau.</p>
+                    <a class="btn btn-outline-primary px-3" href="{{ route('causes', ['kategori' => 'Pendidikan']) }}">
+                        Selengkapnya
+                        <div class="d-inline-flex btn-sm-square bg-primary text-white rounded-circle ms-2">
+                            <i class="fa fa-arrow-right"></i>
+                        </div>
+                    </a>
+                </div>
             </div>
-            <div class="row g-4 justify-content-center">
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="service-item bg-white text-center h-100 p-4 p-xl-5">
-                        <img class="img-fluid mb-4" src="{{ asset('assets/charitee/img/icon-1.png') }}" alt="">
-                        <h4 class="mb-3">Child Education</h4>
-                        <p class="mb-4">Tempor ut dolore lorem kasd vero ipsum sit eirmod sit. Ipsum diam justo sed vero dolor duo.</p>
-                        <a class="btn btn-outline-primary px-3" href="">
-                            Learn More
-                            <div class="d-inline-flex btn-sm-square bg-primary text-white rounded-circle ms-2">
-                                <i class="fa fa-arrow-right"></i>
-                            </div>
-                        </a>
-                    </div>
+            <!-- Air Bersih -->
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="service-item bg-white text-center h-100 p-4 p-xl-5">
+                    <i class="fa fa-tint fa-3x text-success mb-4"></i>
+                    <h4 class="mb-3">Akses Air Bersih</h4>
+                    <p class="mb-4">Kami menyediakan akses air bersih dan sanitasi untuk masyarakat yang membutuhkan di daerah terpencil.</p>
+                    <a class="btn btn-outline-primary px-3" href="{{ route('causes', ['kategori' => 'Air Bersih']) }}">
+                        Selengkapnya
+                        <div class="d-inline-flex btn-sm-square bg-primary text-white rounded-circle ms-2">
+                            <i class="fa fa-arrow-right"></i>
+                        </div>
+                    </a>
                 </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="service-item bg-white text-center h-100 p-4 p-xl-5">
-                        <img class="img-fluid mb-4" src="{{ asset('assets/charitee/img/icon-2.png') }}" alt="">
-                        <h4 class="mb-3">Medical Treatment</h4>
-                        <p class="mb-4">Tempor ut dolore lorem kasd vero ipsum sit eirmod sit. Ipsum diam justo sed vero dolor duo.</p>
-                        <a class="btn btn-outline-primary px-3" href="">
-                            Learn More
-                            <div class="d-inline-flex btn-sm-square bg-primary text-white rounded-circle ms-2">
-                                <i class="fa fa-arrow-right"></i>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="service-item bg-white text-center h-100 p-4 p-xl-5">
-                        <img class="img-fluid mb-4" src="{{ asset('assets/charitee/img/icon-3.png') }}" alt="">
-                        <h4 class="mb-3">Pure Drinking Water</h4>
-                        <p class="mb-4">Tempor ut dolore lorem kasd vero ipsum sit eirmod sit. Ipsum diam justo sed vero dolor duo.</p>
-                        <a class="btn btn-outline-primary px-3" href="">
-                            Learn More
-                            <div class="d-inline-flex btn-sm-square bg-primary text-white rounded-circle ms-2">
-                                <i class="fa fa-arrow-right"></i>
-                            </div>
-                        </a>
-                    </div>
+            </div>
+            <!-- Bencana Alam -->
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="service-item bg-white text-center h-100 p-4 p-xl-5">
+                    <i class="fa fa-life-ring fa-3x text-danger mb-4"></i>
+                    <h4 class="mb-3">Bantuan Bencana Alam</h4>
+                    <p class="mb-4">Kami hadir cepat untuk menyalurkan bantuan kepada korban bencana alam di seluruh pelosok negeri.</p>
+                    <a class="btn btn-outline-primary px-3" href="{{ route('causes', ['kategori' => 'Bencana Alam']) }}">
+                        Selengkapnya
+                        <div class="d-inline-flex btn-sm-square bg-primary text-white rounded-circle ms-2">
+                            <i class="fa fa-arrow-right"></i>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Service End -->
-
-
-    <!-- Donate Start -->
-    <div class="container-fluid donate my-5 py-5" data-parallax="scroll" data-image-src="img/carousel-2.jpg">
-        <div class="container py-5">
-            <div class="row g-5 align-items-center">
-                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
-                    <div class="d-inline-block rounded-pill bg-secondary text-primary py-1 px-3 mb-3">Donate Now</div>
-                    <h1 class="display-6 text-white mb-5">Thanks For The Results Achieved With You</h1>
-                    <p class="text-white-50 mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
-                </div>
-                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
-                    <div class="h-100 bg-white p-5">
-                        <form>
-                            <div class="row g-3">
-                                <div class="col-12">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control bg-light border-0" id="name" placeholder="Your Name">
-                                        <label for="name">Your Name</label>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-floating">
-                                        <input type="email" class="form-control bg-light border-0" id="email" placeholder="Your Email">
-                                        <label for="email">Your Email</label>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="btn-group d-flex justify-content-around">
-                                        <input type="radio" class="btn-check" name="btnradio" id="btnradio1" checked>
-                                        <label class="btn btn-light py-3" for="btnradio1">$10</label>
-
-                                        <input type="radio" class="btn-check" name="btnradio" id="btnradio2">
-                                        <label class="btn btn-light py-3" for="btnradio2">$20</label>
-
-                                        <input type="radio" class="btn-check" name="btnradio" id="btnradio3">
-                                        <label class="btn btn-light py-3" for="btnradio3">$30</label>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <button class="btn btn-primary px-5" style="height: 60px;">
-                                        Donate Now
-                                        <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
-                                            <i class="fa fa-arrow-right"></i>
-                                        </div>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Donate End -->
+</div>
+<!-- Service End -->
 
 
     <!-- Team Start -->
@@ -347,21 +294,22 @@
         <div class="container">
             <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
                 <div class="d-inline-block rounded-pill bg-secondary text-primary py-1 px-3 mb-3">Team Members</div>
-                <h1 class="display-6 mb-5">Let's Meet With Our Ordinary Soldiers</h1>
+                <h1 class="display-6 mb-5">Kenali Tim Hebat di Balik Aksi Kemanusiaan Kita</h1>
             </div>
-            <div class="row g-4 justify-content-center">
+            <div class="row g-4 justify-content-center ">
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="team-item position-relative rounded overflow-hidden">
                         <div class="overflow-hidden">
                             <img class="img-fluid" src="{{ asset('assets/charitee/img/team-1.jpg') }}" alt="">
                         </div>
                         <div class="team-text bg-light text-center p-4">
-                            <h5>Full Name</h5>
+                            <h5>Eko NurCahyo</h5>
                             <p class="text-primary">Designation</p>
                             <div class="team-social text-center">
-                                <a class="btn btn-square" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-twitter"></i></a>
                                 <a class="btn btn-square" href=""><i class="fab fa-instagram"></i></a>
+                                <a class="btn btn-square" href="https://wa.me/+6281913339357" target="_blank">
+                                    <i class="fab fa-whatsapp"></i>
+                                  </a> 
                             </div>
                         </div>
                     </div>
@@ -372,12 +320,13 @@
                             <img class="img-fluid" src="{{ asset('assets/charitee/img/team-2.jpg') }}" alt="">
                         </div>
                         <div class="team-text bg-light text-center p-4">
-                            <h5>Full Name</h5>
+                            <h5>Fiqri Fathurrohman</h5>
                             <p class="text-primary">Designation</p>
                             <div class="team-social text-center">
-                                <a class="btn btn-square" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-twitter"></i></a>
                                 <a class="btn btn-square" href=""><i class="fab fa-instagram"></i></a>
+                                <a class="btn btn-square" href="https://wa.me/+6282114151478" target="_blank">
+                                    <i class="fab fa-whatsapp"></i>
+                                  </a>
                             </div>
                         </div>
                     </div>
@@ -388,12 +337,13 @@
                             <img class="img-fluid" src="{{ asset('assets/charitee/img/team-3.jpg') }}" alt="">
                         </div>
                         <div class="team-text bg-light text-center p-4">
-                            <h5>Full Name</h5>
+                            <h5>Alfin Khalaj Syahruwardi</h5>
                             <p class="text-primary">Designation</p>
                             <div class="team-social text-center">
-                                <a class="btn btn-square" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-twitter"></i></a>
                                 <a class="btn btn-square" href=""><i class="fab fa-instagram"></i></a>
+                                <a class="btn btn-square" href="https://wa.me/+62895379520899" target="_blank">
+                                    <i class="fab fa-whatsapp"></i>
+                                  </a>
                             </div>
                         </div>
                     </div>

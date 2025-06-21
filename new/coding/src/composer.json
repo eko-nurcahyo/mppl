@@ -11,6 +11,7 @@
         "awcodes/overlook": "*",
         "aymanalhattami/filament-slim-scrollbar": "*",
         "bezhansalleh/filament-shield": "*",
+        "blade-ui-kit/blade-heroicons": "*",
         "diogogpinto/filament-auth-ui-enhancer": "*",
         "filament/filament": "^3.3",
         "hasnayeen/themes": "*",
