@@ -38,48 +38,54 @@ class ProgramResource extends Resource
                 ->numeric()
                 ->required(),
 
-            Forms\Components\TextInput::make('Wilayah')
-                ->label('Wilayah')
+            Forms\Components\TextInput::make('wilayah')
+                ->label('Wilayah (Contoh: Papua, Jawa, Sulawesi, dll)')
                 ->required(),
 
             Forms\Components\TextInput::make('kota')
                 ->label('Kota')
                 ->required(),
 
-            RichEditor::make('kisah')
-                ->label('Kisah Program')
-                ->toolbarButtons(['bold', 'italic', 'link', 'blockquote', 'bulletList', 'orderedList', 'undo', 'redo'])
-                ->helperText('Kisah menyentuh yang akan ditampilkan di halaman donasi.'),
+            Forms\Components\FileUpload::make('gambar')
+                ->label('Gambar Utama Program (Banner)')
+                ->image()
+                ->imageEditor()
+                ->directory('assets/charitee/img/gmbr')
+                ->disk('public')
+                ->maxSize(10240)
+                ->helperText('Gambar ini akan tampil di halaman daftar program.'),
 
             Forms\Components\FileUpload::make('foto_kisah')
                 ->label('Foto Pendukung Kisah')
                 ->image()
-                ->directory('program-kisah')
+                ->imageEditor()
+                ->directory('assets/charitee/img/gmbr')
+                ->disk('public')
                 ->maxSize(3072)
-                ->nullable(),
+                ->helperText('Foto ini akan tampil di halaman detail donasi.'),
+
+            RichEditor::make('kisah')
+                ->label('Kisah Program')
+                ->toolbarButtons([
+                    'bold', 'italic', 'link', 'blockquote', 'bulletList', 'orderedList', 'undo', 'redo'
+                ])
+                ->helperText('Tulis kisah menyentuh untuk mengajak orang berdonasi.'),
 
             Forms\Components\Textarea::make('deskripsi')
-                ->label('Deskripsi Program')
+                ->label('Deskripsi Singkat Program')
                 ->rows(4)
                 ->required(),
 
             Forms\Components\DatePicker::make('tanggal_mulai')
-                ->label('Tanggal Mulai')
+                ->label('Tanggal Mulai Program')
                 ->required(),
 
             Forms\Components\DatePicker::make('tanggal_akhir')
-                ->label('Tanggal Akhir')
+                ->label('Tanggal Berakhir Program')
                 ->required(),
 
-            Forms\Components\FileUpload::make('gambar')
-                ->label('Banner / Gambar')
-                ->image()
-                ->directory('programs')
-                ->maxSize(10240)
-                ->nullable(),
-
             Forms\Components\Select::make('status')
-                ->label('Status')
+                ->label('Status Program')
                 ->options([
                     'aktif' => 'Aktif',
                     'nonaktif' => 'Nonaktif',
@@ -87,48 +93,48 @@ class ProgramResource extends Resource
                 ->default('aktif')
                 ->required(),
 
-                Forms\Components\Select::make('kategori')
-                ->label('Kategori')
+            Forms\Components\Select::make('kategori')
+                ->label('Kategori Program')
                 ->options([
                     'Pendidikan' => 'Pendidikan',
                     'Air Bersih' => 'Air Bersih',
                     'Bencana Alam' => 'Bencana Alam',
                 ])
                 ->required(),
-            
         ]);
     }
 
     public static function table(Table $table): Table
     {
-        return $table->columns([
-            Tables\Columns\TextColumn::make('judul')->label('Judul')->searchable()->sortable(),
-            Tables\Columns\TextColumn::make('slug')->label('Slug')->toggleable(),
-            Tables\Columns\TextColumn::make('kategori')->label('Kategori')->sortable(),
-            Tables\Columns\TextColumn::make('wilayah')->label('wilayah')->sortable(),
-            Tables\Columns\TextColumn::make('kota')->label('Kota')->sortable(),
-            Tables\Columns\TextColumn::make('target_donasi')->label('Target')->money('IDR')->sortable(),
-            Tables\Columns\TextColumn::make('tanggal_mulai')->label('Mulai')->date(),
-            Tables\Columns\TextColumn::make('tanggal_akhir')->label('Akhir')->date(),
-            Tables\Columns\ImageColumn::make('gambar')->label('Banner'),
-            Tables\Columns\ImageColumn::make('foto_kisah')->label('Foto Kisah'),
-            Tables\Columns\BadgeColumn::make('status')
-                ->label('Status')
-                ->formatStateUsing(fn ($state) => $state === 'aktif' ? 'Aktif' : 'Nonaktif')
-                ->colors([
-                    'success' => 'aktif',
-                    'danger' => 'nonaktif',
+        return $table
+            ->columns([
+                Tables\Columns\TextColumn::make('judul')->label('Judul')->searchable()->sortable(),
+                Tables\Columns\TextColumn::make('slug')->label('Slug')->toggleable(),
+                Tables\Columns\TextColumn::make('kategori')->label('Kategori')->sortable(),
+                Tables\Columns\TextColumn::make('wilayah')->label('Wilayah')->sortable(),
+                Tables\Columns\TextColumn::make('kota')->label('Kota')->sortable(),
+                Tables\Columns\TextColumn::make('target_donasi')->label('Target Donasi')->money('IDR')->sortable(),
+                Tables\Columns\TextColumn::make('tanggal_mulai')->label('Tanggal Mulai')->date(),
+                Tables\Columns\TextColumn::make('tanggal_akhir')->label('Tanggal Akhir')->date(),
+                Tables\Columns\ImageColumn::make('gambar')->label('Banner'),
+                Tables\Columns\ImageColumn::make('foto_kisah')->label('Foto Kisah'),
+                Tables\Columns\BadgeColumn::make('status')
+                    ->label('Status')
+                    ->formatStateUsing(fn ($state) => $state === 'aktif' ? 'Aktif' : 'Nonaktif')
+                    ->colors([
+                        'success' => 'aktif',
+                        'danger' => 'nonaktif',
+                    ]),
+            ])
+            ->filters([])
+            ->actions([
+                Tables\Actions\EditAction::make(),
+            ])
+            ->bulkActions([
+                Tables\Actions\BulkActionGroup::make([
+                    Tables\Actions\DeleteBulkAction::make(),
                 ]),
-        ])
-        ->filters([])
-        ->actions([
-            Tables\Actions\EditAction::make(),
-        ])
-        ->bulkActions([
-            Tables\Actions\BulkActionGroup::make([
-                Tables\Actions\DeleteBulkAction::make(),
-            ]),
-        ]);
+            ]);
     }
 
     public static function getRelations(): array

@@ -30,7 +30,7 @@
         <!-- Filter -->
         <form method="GET" action="{{ route('causes') }}" class="d-flex justify-content-center gap-3 mb-4">
             <select name="wilayah" onchange="this.form.submit()" class="form-select w-auto">
-                <option value="">Semua Pulau/Wilayah</option>
+                <option value="">Semua Pulau/W</option>
                 @foreach ($wilayahList as $wilayah)
                     <option value="{{ $wilayah }}" {{ request('wilayah') == $wilayah ? 'selected' : '' }}>
                         {{ $wilayah }}
