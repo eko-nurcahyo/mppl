@@ -6,26 +6,29 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
- // database/migrations/xxxx_xx_xx_xxxxxx_add_kisah_to_programs_table.php
+    public function up()
+    {
+        Schema::table('programs', function (Blueprint $table) {
+            if (!Schema::hasColumn('programs', 'kisah')) {
+                $table->longText('kisah')->nullable()->after('deskripsi');
+            }
 
-public function up()
-{
-    Schema::table('programs', function (Blueprint $table) {
-        $table->longText('kisah')->nullable()->after('deskripsi');
-        $table->string('foto_kisah')->nullable()->after('kisah');
-    });
-}
+            if (!Schema::hasColumn('programs', 'foto_kisah')) {
+                $table->string('foto_kisah')->nullable()->after('kisah');
+            }
+        });
+    }
 
-public function down()
-{
-    Schema::table('programs', function (Blueprint $table) {
-        $table->dropColumn(['kisah', 'foto_kisah']);
-    });
-}
+    public function down()
+    {
+        Schema::table('programs', function (Blueprint $table) {
+            if (Schema::hasColumn('programs', 'kisah')) {
+                $table->dropColumn('kisah');
+            }
 
-
-
+            if (Schema::hasColumn('programs', 'foto_kisah')) {
+                $table->dropColumn('foto_kisah');
+            }
+        });
+    }
 };

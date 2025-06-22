@@ -1,28 +1,29 @@
 @extends('layouts.app')
-@section('title', 'Causes | ChariTeam')
+@section('title', 'Causes | FoudUnity')
 
 @section('content')
 
-<!-- Page Header Start -->
-<div class="container-fluid page-header mb-5 wow fadeIn" data-wow-delay="0.1s">
-    <div class="container text-center">
-        <h1 class="display-4 text-white animated slideInDown mb-4">Causes</h1>
-        <nav aria-label="breadcrumb animated slideInDown">
-            <ol class="breadcrumb justify-content-center mb-0">
-                <li class="breadcrumb-item"><a class="text-white" href="{{ url('/') }}">Home</a></li>
-                <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
-                <li class="breadcrumb-item text-primary active" aria-current="page">Causes</li>
-            </ol>
-        </nav>
+    <!-- Page Header Start -->
+    <div class="container-fluid page-header mb-5 wow fadeIn text-white" data-wow-delay="0.1s"
+    style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('{{ asset('assets/charitee/img/gmbr/dnsi.png') }}') center center / cover no-repeat;">
+        <div class="container text-center">
+            <h1 class="display-4 text-white animated slideInDown mb-4">Tujuan</h1>
+            <nav aria-label="breadcrumb animated slideInDown">
+                <ol class="breadcrumb justify-content-center mb-0">
+                    <li class="breadcrumb-item"><a class="text-white" href="{{ url('/') }}">Beranda</a></li>
+                    <li class="breadcrumb-item"><a class="text-white" href="{{ url('/pages') }}">Halaman</a></li>
+                    <li class="breadcrumb-item text-primary active" aria-current="page">Tujuan</li>
+                </ol>
+            </nav>
+        </div>
     </div>
-</div>
-<!-- Page Header End -->
+    <!-- Page Header End -->
 
 <!-- Causes Start -->
 <div class="container-xxl py-5">
     <div class="container">
         <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-            <div class="d-inline-block rounded-pill bg-secondary text-primary py-1 px-3 mb-3">Feature Causes</div>
+            <div class="d-inline-block rounded-pill bg-secondary text-primary py-1 px-3 mb-3">Program Unggulan</div>
             <h2 class="section-title">Mari Ulurkan Tangan, Ringankan Beban Sesama</h2>
         </div>
 
@@ -94,7 +95,7 @@
                         </div>
                         <div class="position-relative mt-auto">
                             @if($program->gambar)
-                                <img class="img-fluid" src="{{ asset('storage/' . $program->gambar) }}" alt="{{ $program->judul }}">
+                                <img class="img-fluid" src="{{ asset($program->gambar) }}" alt="{{ $program->judul }}">
                             @else
                                 <img class="img-fluid" src="{{ asset('images/default-donation.jpg') }}" alt="Default Gambar">
                             @endif

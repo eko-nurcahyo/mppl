@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Home | ChariTeam')
+@section('title', 'Home | FoudUnity')
 
 
 @section('content')
@@ -8,18 +8,43 @@
         <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                        <img class="w-100" src="{{ asset('assets/charitee/img/gmbr/PENDIDIKAN.png') }}" alt="Image">                    <div class="carousel-caption">
+                        <img class="w-100" src="{{ asset('assets/charitee/img/gmbr/PENDIDIKAN.png') }}" alt="Image">                    
+                        <div class="carousel-caption">
                         <div class="container">
                             <div class="row justify-content-center">
                                 <div class="col-lg-7 pt-5">
                                     <h1 class="display-4 text-white mb-3 animated slideInDown">Mari Kita Ubah Dunia Dengan Kemanusiaan</h1>
                                     <p class="fs-5 text-white-50 mb-5 animated slideInDown">Setiap donasi Anda membawa harapan baru bagi mereka yang membutuhkan. Bersama kita bisa wujudkan perubahan.</p>
-                                    <a class="btn btn-primary py-2 px-3 animated slideInDown" href="{{ url('/about') }}">
-                                        Learn More
-                                        <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
-                                            <i class="fa fa-arrow-right"></i>
-                                        </div>
-                                    </a>
+                                    <div class="d-flex justify-content-center mt-4">
+                                        <a class="btn btn-outline-primary py-2 px-3" href="{{ url('/causes') }}">
+                                            Donasi Sekarang
+                                            <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
+                                                <i class="fa fa-arrow-right"></i>
+                                            </div>
+                                        </a>
+                                    </div>                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="w-100" src="{{ asset('assets/charitee/img/gmbr/AIR_BERSIH.png') }}" alt="Image">
+                    <div class="carousel-caption">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-7 pt-5">
+                                    <h1 class="display-4 text-white mb-3 animated slideInDown">Mari Kita Ubah Dunia Dengan Kemanusiaan</h1>
+                                    <p class="fs-5 text-white-50 mb-5 animated slideInDown">Setiap donasi Anda membawa harapan baru bagi mereka yang membutuhkan. Bersama kita bisa wujudkan perubahan.</p>
+                                    <div class="d-flex justify-content-center mt-4">
+                                        <a class="btn btn-outline-primary py-2 px-3" href="{{ url('/causes') }}">
+                                            Donasi Sekarang
+                                            <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
+                                                <i class="fa fa-arrow-right"></i>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -27,39 +52,22 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img class="w-100" src="{{ asset('assets/charitee/img/gmbr/AIRBERSIH.png') }}" alt="Image">
+                    <img class="w-100" src="{{ asset('assets/charitee/img/gmbr/BENCANA_ALAM.png') }}" alt="Image">
                     <div class="carousel-caption">
                         <div class="container">
                             <div class="row justify-content-center">
                                 <div class="col-lg-7 pt-5">
                                     <h1 class="display-4 text-white mb-3 animated slideInDown">Mari Kita Ubah Dunia Dengan Kemanusiaan</h1>
                                     <p class="fs-5 text-white-50 mb-5 animated slideInDown">Setiap donasi Anda membawa harapan baru bagi mereka yang membutuhkan. Bersama kita bisa wujudkan perubahan.</p>
-                                    <a class="btn btn-primary py-2 px-3 animated slideInDown" href="{{ url('/about') }}">
-                                        Learn More
-                                        <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
-                                            <i class="fa fa-arrow-right"></i>
-                                        </div>
-                                    </a>
+                                    <div class="d-flex justify-content-center mt-4">
+                                        <a class="btn btn-outline-primary py-2 px-3" href="{{ url('/causes') }}">
+                                            Donasi Sekarang
+                                            <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
+                                                <i class="fa fa-arrow-right"></i>
+                                            </div>
+                                        </a>
+                                    </div>
                                     
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img class="w-100" src="{{ asset('assets/charitee/img/gmbr/BENCANAALAM.png') }}" alt="Image">
-                    <div class="carousel-caption">
-                        <div class="container">
-                            <div class="row justify-content-center">
-                                <div class="col-lg-7 pt-5">
-                                    <h1 class="display-4 text-white mb-3 animated slideInDown">Mari Kita Ubah Dunia Dengan Kemanusiaan</h1>
-                                    <p class="fs-5 text-white-50 mb-5 animated slideInDown">Setiap donasi Anda membawa harapan baru bagi mereka yang membutuhkan. Bersama kita bisa wujudkan perubahan.</p>
-                                    <a class="btn btn-primary py-2 px-3 animated slideInDown" href="{{ url('/about') }}">
-                                        Learn More
-                                        <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
-                                            <i class="fa fa-arrow-right"></i>
-                                        </div>
-                                    </a>
                                     
                                 </div>
                             </div>
@@ -94,25 +102,20 @@
                 </div>
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="h-100">
-                        <div class="d-inline-block rounded-pill bg-secondary text-primary py-1 px-3 mb-3">About Us</div>
+                        <div class="d-inline-block rounded-pill bg-secondary text-primary py-1 px-3 mb-3">Tentang Kami</div>
                         <h1 class="display-6 mb-5">Bersama Anda, Kami Bantu Mereka yang Membutuhkan di Seluruh Indonesia</h1>
                         <div class="bg-light border-bottom border-5 border-primary rounded p-4 mb-4">
                             <p class="text-dark mb-2">Kami percaya bahwa setiap kebaikan, sekecil apa pun, dapat membawa perubahan besar. Dengan donasi Anda, kami hadir untuk membantu masyarakat yang membutuhkan di berbagai daerah, dari kota hingga pelosok negeri, di seluruh Indonesia.</p>
                             <span class="text-primary">Jhon Doe, Founder</span>
                         </div>
                         <p class="mb-5">Indonesia adalah rumah bagi jutaan harapan. Melalui semangat gotong royong, kita dapat menjangkau saudara-saudara kita di seluruh penjuru tanah air. Bersama, kita bangun masa depan yang lebih baik untuk semua.</p>
-                        <a class="btn btn-primary py-2 px-3 me-3" href="">
-                            Learn More
-                            <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
-                                <i class="fa fa-arrow-right"></i>
-                            </div>
-                        </a>
-                        <a class="btn btn-outline-primary py-2 px-3" href="">
-                            Contact Us
+                        <a class="btn btn-outline-primary py-2 px-3" href="{{ route('contact.index') }}">
+                            Hubungi Kami
                             <div class="d-inline-flex btn-sm-square bg-primary text-white rounded-circle ms-2">
                                 <i class="fa fa-arrow-right"></i>
                             </div>
                         </a>
+                        
                     </div>
                 </div>
             </div>

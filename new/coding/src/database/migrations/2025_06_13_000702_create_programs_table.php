@@ -16,7 +16,7 @@ class CreateProgramsTable extends Migration
             $table->string('wilayah')->nullable();  // ✅ wilayah besar (misalnya: Jawa)
             $table->string('kota')->nullable();     // ✅ nama kota spesifik
             $table->text('deskripsi');
-            $table->bigInteger('target');
+            $table->bigInteger('target_donasi');
             $table->date('tanggal_mulai')->nullable();
             $table->date('tanggal_akhir')->nullable();
             $table->string('gambar')->nullable();

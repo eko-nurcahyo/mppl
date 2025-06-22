@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('programs', function (Blueprint $table) {
-            $table->bigInteger('target_donasi')->after('kota');
+            //$table->bigInteger('target_donasi')->after('kota');
         });
     }
 

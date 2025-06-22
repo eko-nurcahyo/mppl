@@ -2,27 +2,39 @@
 @section('title', 'Donasi untuk ' . $program->judul)
 
 @section('content')
-<!-- HEADER -->
-<div class="container-fluid py-5 text-white" style="background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url('/assets/charitee/img/bg-header.jpg') center center / cover no-repeat;">
+<!-- Page Header Start -->
+<div class="container-fluid page-header mb-5 wow fadeIn text-white" data-wow-delay="0.1s"
+     style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('{{ asset('assets/charitee/img/gmbr/dnsi.png') }}') center center / cover no-repeat;">
     <div class="container text-center">
-        <h1 class="fw-bold display-5 mb-0 text-uppercase text-wrap" style="font-size: 2.5rem;">
-            <span class="text-warning">{{ $program->judul }}</span>
-        </h1>
+        <h1 class="display-4 text-white animated slideInDown mb-4">{{ $program->judul }}</h1>
+        <nav aria-label="breadcrumb animated slideInDown">
+            <ol class="breadcrumb justify-content-center mb-0">
+                <li class="breadcrumb-item"><a class="text-white" href="{{ url('/') }}">Beranda</a></li>
+                <li class="breadcrumb-item"><a class="text-white" href="#">Program</a></li>
+                <li class="breadcrumb-item text-primary active" aria-current="page">{{ $program->judul }}</li>
+            </ol>
+        </nav>
     </div>
 </div>
+<!-- Page Header End -->
+
 
 <!-- DONASI CONTENT -->
+
 <div class="container my-5">
     <div class="row g-4">
 
+    
+
         <!-- KISAH DI BALIK PROGRAM -->
+        
         <div class="col-md-10 offset-md-1">
             <div class="bg-white p-4 rounded shadow-sm">
                 <h4 class="fw-bold text-center mb-3">Kisah di Balik Program Ini</h4>
 
                 @if($program->foto_kisah)
                     <div class="text-center mb-3">
-                        <img src="{{ asset($program->foto_kisah) }}" alt="Foto Kisah {{ $program->judul }}" class="img-fluid rounded" style="max-height:400px; object-fit:cover;">
+                        <img src="{{ asset($program->foto_kisah) }}" alt="Foto Kisah {{ $program->judul }}" class="img-fluid rounded" style="max-height:800px; object-fit:cover;">
                     </div>
                 @endif
 

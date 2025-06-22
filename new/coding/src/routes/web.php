@@ -23,7 +23,7 @@ Route::get('/donate/{program}', [DonationController::class, 'show'])->name('dona
 Route::post('/donate', [DonationController::class, 'store'])->name('donate.store');
 
 // Contact Us
-Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
 Route::post('/contact', [ContactController::class, 'submit'])->name('contact.submit');
 
 // Fallback untuk halaman yang tidak ditemukan

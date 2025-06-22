@@ -1,22 +1,23 @@
 @extends('layouts.app')
-@section('title', 'About | ChariTeam')
+@section('title', 'About | FoudUnity')
 
 @section('content')
     <!-- Page Header Start -->
-    <div class="container-fluid page-header mb-5 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container-fluid page-header mb-5 wow fadeIn text-white" data-wow-delay="0.1s"
+    style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('{{ asset('assets/charitee/img/gmbr/dnsi.png') }}') center center / cover no-repeat;">
         <div class="container text-center">
-            <h1 class="display-4 text-white animated slideInDown mb-4">About Us</h1>
+            <h1 class="display-4 text-white animated slideInDown mb-4">Tentang Kami</h1>
             <nav aria-label="breadcrumb animated slideInDown">
                 <ol class="breadcrumb justify-content-center mb-0">
-                    <li class="breadcrumb-item"><a class="text-white" href="{{ url('/') }}">Home</a></li>
-                    <li class="breadcrumb-item"><a class="text-white" href="{{ url('/pages') }}">Pages</a></li>
-                    <li class="breadcrumb-item text-primary active" aria-current="page">About Us</li>
+                    <li class="breadcrumb-item"><a class="text-white" href="{{ url('/') }}">Beranda</a></li>
+                    <li class="breadcrumb-item"><a class="text-white" href="{{ url('/pages') }}">Hlaman</a></li>
+                    <li class="breadcrumb-item text-primary active" aria-current="page">Tentang Kami</li>
                 </ol>
             </nav>
         </div>
     </div>
     <!-- Page Header End -->
-
+ 
 
     <!-- About Start -->
     <div class="container-xxl py-5">
@@ -30,25 +31,20 @@
                 </div>
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="h-100">
-                        <div class="d-inline-block rounded-pill bg-secondary text-primary py-1 px-3 mb-3">About Us</div>
+                        <div class="d-inline-block rounded-pill bg-secondary text-primary py-1 px-3 mb-3">Tentang Kami</div>
                         <h1 class="display-6 mb-5">Bersama Anda, Kami Bantu Mereka yang Membutuhkan di Seluruh Indonesia</h1>
                         <div class="bg-light border-bottom border-5 border-primary rounded p-4 mb-4">
                             <p class="text-dark mb-2">Kami percaya bahwa setiap kebaikan, sekecil apa pun, dapat membawa perubahan besar. Dengan donasi Anda, kami hadir untuk membantu masyarakat yang membutuhkan di berbagai daerah, dari kota hingga pelosok negeri, di seluruh Indonesia.</p>
                             <span class="text-primary">Jhon Doe, Founder</span>
                         </div>
                         <p class="mb-5">Indonesia adalah rumah bagi jutaan harapan. Melalui semangat gotong royong, kita dapat menjangkau saudara-saudara kita di seluruh penjuru tanah air. Bersama, kita bangun masa depan yang lebih baik untuk semua.</p>
-                        <a class="btn btn-primary py-2 px-3 me-3" href="">
-                            Learn More
-                            <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
-                                <i class="fa fa-arrow-right"></i>
-                            </div>
-                        </a>
-                        <a class="btn btn-outline-primary py-2 px-3" href="">
-                            Contact Us
+                        <a class="btn btn-outline-primary py-2 px-3" href="{{ route('contact.index') }}">
+                            Hubungi Kami
                             <div class="d-inline-flex btn-sm-square bg-primary text-white rounded-circle ms-2">
                                 <i class="fa fa-arrow-right"></i>
                             </div>
                         </a>
+                        
                     </div>
                 </div>
             </div>

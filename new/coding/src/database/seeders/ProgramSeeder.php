@@ -89,8 +89,8 @@ class ProgramSeeder extends Seeder
                         'kota' => $kota,
                         'target_donasi' => $target ?? 100000000,
                         'status' => 'aktif',
-                        'gambar' => $gambar ? "assets/charitee/img/gmbr/{$gambar}" : null,
-                        'foto_kisah' => $foto_kisah ? "assets/charitee/img/gmbr/{$foto_kisah}" : null,
+                        'gambar' => $gambar ? "/assets/charitee/img/gmbr/{$gambar}" : null,
+                        'foto_kisah' => $foto_kisah ? "/assets/charitee/img/gmbr/{$foto_kisah}" : null,
                         'deskripsi' => 'Program bantuan untuk kategori ' . strtolower($kategori) . ' di wilayah ' . $kota . '.',
                     ]
                 );
