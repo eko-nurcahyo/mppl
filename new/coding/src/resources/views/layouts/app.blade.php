@@ -61,5 +61,8 @@
 
     <!-- Template Javascript -->
     <script src="{{ asset('assets/charitee/js/main.js') }}"></script>
+
+    <!-- Script tambahan dari child view (contoh: donate.blade.php) -->
+    @stack('scripts')
 </body>
 </html>

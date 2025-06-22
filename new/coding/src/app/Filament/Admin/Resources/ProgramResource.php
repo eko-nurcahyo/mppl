@@ -38,7 +38,7 @@ class ProgramResource extends Resource
                 ->numeric()
                 ->required(),
 
-            Forms\Components\TextInput::make('wilayah')
+            Forms\Components\TextInput::make('Wilayah')
                 ->label('Wilayah')
                 ->required(),
 
@@ -105,7 +105,7 @@ class ProgramResource extends Resource
             Tables\Columns\TextColumn::make('judul')->label('Judul')->searchable()->sortable(),
             Tables\Columns\TextColumn::make('slug')->label('Slug')->toggleable(),
             Tables\Columns\TextColumn::make('kategori')->label('Kategori')->sortable(),
-            Tables\Columns\TextColumn::make('wilayah')->label('Wilayah')->sortable(),
+            Tables\Columns\TextColumn::make('wilayah')->label('wilayah')->sortable(),
             Tables\Columns\TextColumn::make('kota')->label('Kota')->sortable(),
             Tables\Columns\TextColumn::make('target_donasi')->label('Target')->money('IDR')->sortable(),
             Tables\Columns\TextColumn::make('tanggal_mulai')->label('Mulai')->date(),

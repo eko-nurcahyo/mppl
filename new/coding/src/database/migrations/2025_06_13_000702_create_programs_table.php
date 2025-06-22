@@ -13,7 +13,7 @@ class CreateProgramsTable extends Migration
             $table->string('judul');
             $table->string('slug')->unique(); // ✅ wajib untuk identifikasi unik
             $table->string('kategori')->nullable(); // ✅ kategori (misalnya: Pendidikan)
-            $table->string('wilayah')->nullable();  // ✅ wilayah besar (misalnya: Jawa)
+            $table->string('pulau')->nullable();  // ✅ pulau besar (misalnya: Jawa)
             $table->string('kota')->nullable();     // ✅ nama kota spesifik
             $table->text('deskripsi');
             $table->bigInteger('target_donasi');

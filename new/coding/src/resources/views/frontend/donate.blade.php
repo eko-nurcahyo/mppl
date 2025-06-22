@@ -18,20 +18,13 @@
 </div>
 <!-- Page Header End -->
 
-
 <!-- DONASI CONTENT -->
-
 <div class="container my-5">
     <div class="row g-4">
-
-    
-
         <!-- KISAH DI BALIK PROGRAM -->
-        
         <div class="col-md-10 offset-md-1">
             <div class="bg-white p-4 rounded shadow-sm">
                 <h4 class="fw-bold text-center mb-3">Kisah di Balik Program Ini</h4>
-
                 @if($program->foto_kisah)
                     <div class="text-center mb-3">
                         <img src="{{ asset($program->foto_kisah) }}" alt="Foto Kisah {{ $program->judul }}" class="img-fluid rounded" style="max-height:800px; object-fit:cover;">
@@ -61,7 +54,6 @@
                         <li><i class="bi bi-check-circle-fill me-1"></i> Langsung membantu yang membutuhkan</li>
                     </ul>
                     <hr>
-
                     @php
                         $target = $program->target_donasi ?? 0;
                         $raised = $totalTerkumpul ?? 0;
@@ -72,13 +64,8 @@
                     <p><strong>Terkumpul:</strong> Rp{{ number_format($raised, 0, ',', '.') }}</p>
 
                     <div class="progress mt-2">
-                        <div class="progress-bar bg-success"
-                             role="progressbar"
-                             style="width: {{ round($progress) }}%;"
-                             aria-valuenow="{{ round($progress) }}"
-                             aria-valuemin="0"
-                             aria-valuemax="100">
-                             {{ round($progress) }}%
+                        <div class="progress-bar bg-success" role="progressbar" style="width: {{ round($progress) }}%;" aria-valuenow="{{ round($progress) }}" aria-valuemin="0" aria-valuemax="100">
+                            {{ round($progress) }}%
                         </div>
                     </div>
                 </div>
@@ -103,7 +90,7 @@
                                 <input type="email" name="email" class="form-control" placeholder="Email Anda" required>
                             </div>
                             <div class="col-md-6">
-                                <input type="number" name="nominal" class="form-control" placeholder="Nominal Donasi (Rp)" required min="1000" @if(($target - $raised) > 0) max="{{ $target - $raised }}" @endif>
+                                <input type="number" name="nominal" class="form-control" placeholder="Nominal Donasi (Rp)" required max="{{ $program->target_donasi - $totalTerkumpul }}">
                             </div>
                             <div class="col-md-6">
                                 <select name="metode_pembayaran" class="form-select" id="metodeSelect" required>
@@ -113,9 +100,12 @@
                                     <option value="GoPay">GoPay</option>
                                 </select>
                             </div>
-                            <div id="info-rekening" class="alert alert-info mt-2 d-none">
+
+                            <!-- Info Rekening -->
+                            <div id="info-rekening" class="mt-2 d-none" style="background-color: #e8f4fc; border: 1px solid #ddd; padding: 15px; border-radius: 6px;">
                                 <div id="rekening-detail"></div>
                             </div>
+
                             <div class="col-12">
                                 <label for="bukti_transfer" class="form-label fw-semibold text-muted small">Upload Bukti Transfer</label>
                                 <input type="file" name="bukti_transfer" class="form-control" accept="image/*" required>
@@ -133,6 +123,7 @@
         </div>
     </div>
 </div>
+@endsection
 
 @push('scripts')
 <script>
@@ -145,11 +136,29 @@
         let html = '';
 
         if (metode === 'BRI') {
-            html = <div class="text-center"><img src="/assets/charitee/img/BRI.png" alt="BRI" style="height:40px;" class="mb-2"><br><strong>Atas Nama:</strong> EKO NUR CAHYO<br><strong>No Rekening:</strong> <span class="text-danger">351868379736311836</span><br><button class="btn btn-sm btn-outline-secondary mt-2" onclick="navigator.clipboard.writeText('351868379736311836')">Copy</button></div>;
+            html = `
+                <div class="text-center">
+                    <img src="/assets/charitee/img/BRI.png" alt="BRI" style="height:40px;" class="mb-2"><br>
+                    <strong>Atas Nama:</strong> EKO NUR CAHYO<br>
+                    <strong>No Rekening:</strong> <span class="text-danger">351868379736311836</span><br>
+                    <button class="btn btn-sm btn-outline-secondary mt-2" onclick="navigator.clipboard.writeText('351868379736311836')">Copy</button>
+                </div>`;
         } else if (metode === 'DANA') {
-            html = <div class="text-center"><img src="/assets/charitee/img/logo-dana.png" alt="DANA" style="height:40px;" class="mb-2"><br><strong>Atas Nama:</strong> EKO NUR CAHYO<br><strong>No HP:</strong> <span class="text-danger">085812345678</span><br><button class="btn btn-sm btn-outline-secondary mt-2" onclick="navigator.clipboard.writeText('085812345678')">Copy</button></div>;
+            html = `
+                <div class="text-center">
+                    <img src="/assets/charitee/img/dana.png" alt="DANA" style="height:40px;" class="mb-2"><br>
+                    <strong>Atas Nama:</strong> EKO NUR CAHYO<br>
+                    <strong>No HP:</strong> <span class="text-danger">085812345678</span><br>
+                    <button class="btn btn-sm btn-outline-secondary mt-2" onclick="navigator.clipboard.writeText('085812345678')">Copy</button>
+                </div>`;
         } else if (metode === 'GoPay') {
-            html = <div class="text-center"><img src="/assets/charitee/img/logo-gopay.png" alt="GoPay" style="height:40px;" class="mb-2"><br><strong>Atas Nama:</strong> EKO NUR CAHYO<br><strong>No HP:</strong> <span class="text-danger">085876543210</span><br><button class="btn btn-sm btn-outline-secondary mt-2" onclick="navigator.clipboard.writeText('085876543210')">Copy</button></div>;
+            html = `
+                <div class="text-center">
+                    <img src="/assets/charitee/img/gopay.png" alt="GoPay" style="height:40px;" class="mb-2"><br>
+                    <strong>Atas Nama:</strong> EKO NUR CAHYO<br>
+                    <strong>No HP:</strong> <span class="text-danger">085876543210</span><br>
+                    <button class="btn btn-sm btn-outline-secondary mt-2" onclick="navigator.clipboard.writeText('085876543210')">Copy</button>
+                </div>`;
         }
 
         rekeningDetail.innerHTML = html;
@@ -157,5 +166,3 @@
     });
 </script>
 @endpush
-
-@endsection
