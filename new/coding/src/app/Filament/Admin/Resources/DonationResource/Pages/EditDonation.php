@@ -7,6 +7,7 @@ use Filament\Resources\Pages\EditRecord;
 
 use Illuminate\Support\Facades\Mail;
 use App\Mail\DonationStatusUpdated;
+use App\Mail\DonationPendingMail;
 
 class EditDonation extends EditRecord
 {
@@ -14,8 +15,12 @@ class EditDonation extends EditRecord
 
     protected function afterSave(): void
     {
-        // Kirim email notifikasi status donasi ke user
-        Mail::to($this->record->email)
-            ->send(new DonationStatusUpdated($this->record));
+        if ($this->record->status === 'pending') {
+            Mail::to($this->record->email)
+                ->send(new DonationPendingMail($this->record));
+        } else {
+            Mail::to($this->record->email)
+                ->send(new DonationStatusUpdated($this->record));
+        }
     }
 }

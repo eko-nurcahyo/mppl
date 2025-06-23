@@ -13,7 +13,7 @@
                         <div class="container">
                             <div class="row justify-content-center">
                                 <div class="col-lg-7 pt-5">
-                                    <h1 class="display-4 text-white mb-3 animated slideInDown">Mari Kita Ubah Dunia Dengan Kemanusiaan</h1>
+                                    <h1 class="display-4 text-white mb-3 animated slideInDown">Kebaikan Kecilmu, Berarti Besar di Mata Mereka</h1>
                                     <p class="fs-5 text-white-50 mb-5 animated slideInDown">Setiap donasi Anda membawa harapan baru bagi mereka yang membutuhkan. Bersama kita bisa wujudkan perubahan.</p>
                                     <div class="d-flex justify-content-center mt-4">
                                         <a class="btn btn-outline-primary py-2 px-3" href="{{ url('/causes') }}">
@@ -34,7 +34,7 @@
                         <div class="container">
                             <div class="row justify-content-center">
                                 <div class="col-lg-7 pt-5">
-                                    <h1 class="display-4 text-white mb-3 animated slideInDown">Mari Kita Ubah Dunia Dengan Kemanusiaan</h1>
+                                    <h1 class="display-4 text-white mb-3 animated slideInDown">Kebaikan Kecilmu, Berarti Besar di Mata Mereka</h1>
                                     <p class="fs-5 text-white-50 mb-5 animated slideInDown">Setiap donasi Anda membawa harapan baru bagi mereka yang membutuhkan. Bersama kita bisa wujudkan perubahan.</p>
                                     <div class="d-flex justify-content-center mt-4">
                                         <a class="btn btn-outline-primary py-2 px-3" href="{{ url('/causes') }}">
@@ -57,7 +57,7 @@
                         <div class="container">
                             <div class="row justify-content-center">
                                 <div class="col-lg-7 pt-5">
-                                    <h1 class="display-4 text-white mb-3 animated slideInDown">Mari Kita Ubah Dunia Dengan Kemanusiaan</h1>
+                                    <h1 class="display-4 text-white mb-3 animated slideInDown">Kebaikan Kecilmu, Berarti Besar di Mata Mereka</h1>
                                     <p class="fs-5 text-white-50 mb-5 animated slideInDown">Setiap donasi Anda membawa harapan baru bagi mereka yang membutuhkan. Bersama kita bisa wujudkan perubahan.</p>
                                     <div class="d-flex justify-content-center mt-4">
                                         <a class="btn btn-outline-primary py-2 px-3" href="{{ url('/causes') }}">
@@ -303,11 +303,11 @@
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="team-item position-relative rounded overflow-hidden">
                         <div class="overflow-hidden">
-                            <img class="img-fluid" src="{{ asset('assets/charitee/img/team-1.jpg') }}" alt="">
+                            <img class="img-fluid" src="{{ asset('assets/charitee/img/akg.jpg') }}" alt="">
                         </div>
                         <div class="team-text bg-light text-center p-4">
                             <h5>Eko NurCahyo</h5>
-                            <p class="text-primary">Designation</p>
+                            <p class="text-primary">Team Member</p>
                             <div class="team-social text-center">
                                 <a class="btn btn-square" href=""><i class="fab fa-instagram"></i></a>
                                 <a class="btn btn-square" href="https://wa.me/+6281913339357" target="_blank">
@@ -320,11 +320,11 @@
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                     <div class="team-item position-relative rounded overflow-hidden">
                         <div class="overflow-hidden">
-                            <img class="img-fluid" src="{{ asset('assets/charitee/img/team-2.jpg') }}" alt="">
+                            <img class="img-fluid" src="{{ asset('assets/charitee/img/fqi.jpg') }}" alt="">
                         </div>
                         <div class="team-text bg-light text-center p-4">
                             <h5>Fiqri Fathurrohman</h5>
-                            <p class="text-primary">Designation</p>
+                            <p class="text-primary">Team Member</p>
                             <div class="team-social text-center">
                                 <a class="btn btn-square" href=""><i class="fab fa-instagram"></i></a>
                                 <a class="btn btn-square" href="https://wa.me/+6282114151478" target="_blank">
@@ -337,11 +337,11 @@
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="team-item position-relative rounded overflow-hidden">
                         <div class="overflow-hidden">
-                            <img class="img-fluid" src="{{ asset('assets/charitee/img/team-3.jpg') }}" alt="">
+                            <img class="img-fluid" src="{{ asset('assets/charitee/img/afn.jpg') }}" alt="">
                         </div>
                         <div class="team-text bg-light text-center p-4">
                             <h5>Alfin Khalaj Syahruwardi</h5>
-                            <p class="text-primary">Designation</p>
+                            <p class="text-primary">Team Member</p>
                             <div class="team-social text-center">
                                 <a class="btn btn-square" href=""><i class="fab fa-instagram"></i></a>
                                 <a class="btn btn-square" href="https://wa.me/+62895379520899" target="_blank">

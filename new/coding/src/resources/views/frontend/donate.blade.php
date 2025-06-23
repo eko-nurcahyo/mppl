@@ -27,9 +27,13 @@
                 <h4 class="fw-bold text-center mb-3">Kisah di Balik Program Ini</h4>
                 @if($program->foto_kisah)
                     <div class="text-center mb-3">
-                        <img src="{{ asset($program->foto_kisah) }}" alt="Foto Kisah {{ $program->judul }}" class="img-fluid rounded" style="max-height:800px; object-fit:cover;">
+                        <img src="{{ Str::startsWith($program->foto_kisah, '/assets') ? asset($program->foto_kisah) : asset('storage/' . $program->foto_kisah) }}"
+                            alt="Foto Kisah {{ $program->judul }}"
+                            class="img-fluid rounded"
+                            style="max-height:800px; object-fit:cover;">
                     </div>
                 @endif
+
 
                 @if($program->kisah)
                     <div class="text-dark" style="line-height: 1.8;">

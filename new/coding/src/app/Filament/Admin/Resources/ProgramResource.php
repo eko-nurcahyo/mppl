@@ -38,8 +38,17 @@ class ProgramResource extends Resource
                 ->numeric()
                 ->required(),
 
-            Forms\Components\TextInput::make('wilayah')
-                ->label('Wilayah (Contoh: Papua, Jawa, Sulawesi, dll)')
+            Forms\Components\Select::make('wilayah')
+                ->label('Pulau/Wilayah')
+                ->options([
+                    'Paupa' => 'Papua',
+                    'Jawa' => 'Jawa',
+                    'Sulawesi' => 'Sulawesi',
+                    'Kalimantan' => 'Kalimantan',
+                    'Sumatera' => 'Sumatera',
+                    'Bali & Nusa Tenggara' => 'Bali & Nusa Tenggara',
+                    'Maluku' => 'Maluku',
+                ])
                 ->required(),
 
             Forms\Components\TextInput::make('kota')

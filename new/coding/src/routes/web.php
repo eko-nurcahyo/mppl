@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DonationController;
 use App\Http\Controllers\CauseController;
+use App\Http\Controllers\Frontend\ProgramController;
 
 // Halaman utama dan statis
 Route::view('/', 'frontend.index')->name('home');
@@ -30,3 +31,4 @@ Route::post('/contact', [ContactController::class, 'submit'])->name('contact.sub
 Route::fallback(function () {
     return view('frontend.404');
 });
+

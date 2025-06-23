@@ -19,7 +19,7 @@
             <div class="navbar-nav ms-auto p-4 p-lg-0">
                 <a href="{{ url('/') }}" class="nav-item nav-link {{ Request::is('/') ? 'active' : '' }}">Beranda</a>
                 <a href="{{ url('/about') }}" class="nav-item nav-link {{ Request::is('about') ? 'active' : '' }}">Tentang</a>
-                <a href="{{ url('/causes') }}" class="nav-item nav-link {{ Request::is('causes') ? 'active' : '' }}">Tujuan</a>
+                <a href="{{ url('/causes') }}" class="nav-item nav-link {{ Request::is('causes') ? 'active' : '' }}">Donasi</a>
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle {{ Request::is('service') || Request::is('donate') || Request::is('team') || Request::is('testimonial') || Request::is('404') ? 'active' : '' }}" data-bs-toggle="dropdown">Halaman</a>
                     <div class="dropdown-menu m-0">

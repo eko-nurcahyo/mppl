@@ -95,10 +95,13 @@
                         </div>
                         <div class="position-relative mt-auto">
                             @if($program->gambar)
-                                <img class="img-fluid" src="{{ asset($program->gambar) }}" alt="{{ $program->judul }}">
+                                <img class="img-fluid"
+                                    src="{{ Str::startsWith($program->gambar, '/assets') ? asset($program->gambar) : asset('storage/' . $program->gambar) }}"
+                                    alt="{{ $program->judul }}">
                             @else
                                 <img class="img-fluid" src="{{ asset('images/default-donation.jpg') }}" alt="Default Gambar">
                             @endif
+
                             <div class="causes-overlay">
                                 <a class="btn btn-outline-primary" href="{{ route('donate.show', ['program' => $program->id]) }}">
                                     Donasi
