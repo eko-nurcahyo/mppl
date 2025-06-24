@@ -1,6 +1,7 @@
 @component('mail::message')
 
-<img src="{{ asset('assets/charitee/img/Fund.jpg') }}" alt="Logo" style="max-width: 150px; margin-bottom: 20px;">
+# Halo **{{ $donation->nama }}**,  
+Terima kasih telah melakukan donasi untuk program:
 
 # Donasi Anda Sedang Diverifikasi
 

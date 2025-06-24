@@ -52,8 +52,7 @@
     </div>
     <!-- About End -->
 
-
-   <!-- Service Start -->
+<!-- Service Start -->
 <div class="container-xxl py-5">
     <div class="container">
         <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
@@ -64,7 +63,7 @@
             <!-- Pendidikan -->
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                 <div class="service-item bg-white text-center h-100 p-4 p-xl-5">
-                    <i class="fa fa-graduation-cap fa-3x text-primary mb-4"></i>
+                    <i class="fa fa-graduation-cap fa-3x text-success mb-4"></i>
                     <h4 class="mb-3">Pendidikan Anak</h4>
                     <p class="mb-4">Kami mendukung akses pendidikan berkualitas bagi anak-anak di seluruh Indonesia, terutama di wilayah kurang terjangkau.</p>
                     <a class="btn btn-outline-primary px-3" href="{{ route('causes', ['kategori' => 'Pendidikan']) }}">
@@ -78,7 +77,7 @@
             <!-- Air Bersih -->
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                 <div class="service-item bg-white text-center h-100 p-4 p-xl-5">
-                    <i class="fa fa-tint fa-3x text-success mb-4"></i>
+                    <i class="fa fa-tint fa-3x mb-4" style="color: #0d6efd;"></i>
                     <h4 class="mb-3">Akses Air Bersih</h4>
                     <p class="mb-4">Kami menyediakan akses air bersih dan sanitasi untuk masyarakat yang membutuhkan di daerah terpencil.</p>
                     <a class="btn btn-outline-primary px-3" href="{{ route('causes', ['kategori' => 'Air Bersih']) }}">
@@ -89,6 +88,7 @@
                     </a>
                 </div>
             </div>
+
             <!-- Bencana Alam -->
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                 <div class="service-item bg-white text-center h-100 p-4 p-xl-5">
@@ -110,6 +110,7 @@
 
 
 
+
     <!-- Team Start -->
     <div class="container-xxl py-5">
         <div class="container">
@@ -121,11 +122,11 @@
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="team-item position-relative rounded overflow-hidden">
                         <div class="overflow-hidden">
-                            <img class="img-fluid" src="{{ asset('assets/charitee/img/team-1.jpg') }}" alt="">
+                            <img class="img-fluid" src="{{ asset('assets/charitee/img/akg.jpg') }}" alt="">
                         </div>
                         <div class="team-text bg-light text-center p-4">
                             <h5>Eko NurCahyo</h5>
-                            <p class="text-primary">Designation</p>
+                            <p class="text-primary">Team Member</p>
                             <div class="team-social text-center">
                                 <a class="btn btn-square" href=""><i class="fab fa-instagram"></i></a>
                                 <a class="btn btn-square" href="https://wa.me/+6281913339357" target="_blank">
@@ -138,11 +139,11 @@
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                     <div class="team-item position-relative rounded overflow-hidden">
                         <div class="overflow-hidden">
-                            <img class="img-fluid" src="{{ asset('assets/charitee/img/team-2.jpg') }}" alt="">
+                            <img class="img-fluid" src="{{ asset('assets/charitee/img/fqi.jpg') }}" alt="">
                         </div>
                         <div class="team-text bg-light text-center p-4">
                             <h5>Fiqri Fathurrohman</h5>
-                            <p class="text-primary">Designation</p>
+                            <p class="text-primary">Team Member</p>
                             <div class="team-social text-center">
                                 <a class="btn btn-square" href=""><i class="fab fa-instagram"></i></a>
                                 <a class="btn btn-square" href="https://wa.me/+6282114151478" target="_blank">
@@ -155,11 +156,11 @@
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="team-item position-relative rounded overflow-hidden">
                         <div class="overflow-hidden">
-                            <img class="img-fluid" src="{{ asset('assets/charitee/img/team-3.jpg') }}" alt="">
+                            <img class="img-fluid" src="{{ asset('assets/charitee/img/afn.jpg') }}" alt="">
                         </div>
                         <div class="team-text bg-light text-center p-4">
                             <h5>Alfin Khalaj Syahruwardi</h5>
-                            <p class="text-primary">Designation</p>
+                            <p class="text-primary">Team Member</p>
                             <div class="team-social text-center">
                                 <a class="btn btn-square" href=""><i class="fab fa-instagram"></i></a>
                                 <a class="btn btn-square" href="https://wa.me/+62895379520899" target="_blank">

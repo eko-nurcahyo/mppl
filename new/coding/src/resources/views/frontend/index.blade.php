@@ -123,118 +123,80 @@
     </div>
     <!-- About End -->
 
+<!-- Peta Interaktif Start -->
+<div class="container py-5">
+    <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+        <div class="d-inline-block rounded-pill bg-secondary text-primary py-1 px-3 mb-3">Apa yang Kami Lakukan</div>
+        <h1 class="display-6 mb-5">Peta Interaktif Program Donasi</h1>
+    </div>
 
-    <!-- Causes Start -->
-    <div class="container-xxl bg-light my-5 py-5">
-        <div class="container py-5">
-            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-                <div class="d-inline-block rounded-pill bg-secondary text-primary py-1 px-3 mb-3">Feature Causes</div>
-                <h1 class="display-6 mb-5">Every Child Deserves The Opportunity To Learn</h1>
-            </div>
-            <div class="row g-4 justify-content-center">
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="causes-item d-flex flex-column bg-white border-top border-5 border-primary rounded-top overflow-hidden h-100">
-                        <div class="text-center p-4 pt-0">
-                            <div class="d-inline-block bg-primary text-white rounded-bottom fs-5 pb-1 px-3 mb-4">
-                                <small>Education</small>
-                            </div>
-                            <h5 class="mb-3">Education For African Children</h5>
-                            <p>Tempor erat elitr rebum at clita dolor diam ipsum sit diam amet diam et eos</p>
-                            <div class="causes-progress bg-light p-3 pt-2">
-                                <div class="d-flex justify-content-between">
-                                    <p class="text-dark">$10,000 <small class="text-body">Goal</small></p>
-                                    <p class="text-dark">$9,542 <small class="text-body">Raised</small></p>
-                                </div>
-                                <div class="progress">
-                                    <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
-                                        <span>90%</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="position-relative mt-auto">
-                            <img class="img-fluid" src="{{ asset('assets/charitee/img/courses-1.jpg') }}" alt="">
-                            <div class="causes-overlay">
-                                <a class="btn btn-outline-primary" href="">
-                                    Read More
-                                    <div class="d-inline-flex btn-sm-square bg-primary text-white rounded-circle ms-2">
-                                        <i class="fa fa-arrow-right"></i>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="causes-item d-flex flex-column bg-white border-top border-5 border-primary rounded-top overflow-hidden h-100">
-                        <div class="text-center p-4 pt-0">
-                            <div class="d-inline-block bg-primary text-white rounded-bottom fs-5 pb-1 px-3 mb-4">
-                                <small>Pure Water</small>
-                            </div>
-                            <h5 class="mb-3">Ensure Pure Drinking Water</h5>
-                            <p>Tempor erat elitr rebum at clita dolor diam ipsum sit diam amet diam et eos</p>
-                            <div class="causes-progress bg-light p-3 pt-2">
-                                <div class="d-flex justify-content-between">
-                                    <p class="text-dark">$10,000 <small class="text-body">Goal</small></p>
-                                    <p class="text-dark">$9,542 <small class="text-body">Raised</small></p>
-                                </div>
-                                <div class="progress">
-                                    <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
-                                        <span>90%</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="position-relative mt-auto">
-                                <img class="img-fluid" src="{{ asset('assets/charitee/img/courses-2.jpg') }}" alt="">
-                            <div class="causes-overlay">
-                                <a class="btn btn-outline-primary" href="">
-                                    Read More
-                                    <div class="d-inline-flex btn-sm-square bg-primary text-white rounded-circle ms-2">
-                                        <i class="fa fa-arrow-right"></i>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="causes-item d-flex flex-column bg-white border-top border-5 border-primary rounded-top overflow-hidden h-100">
-                        <div class="text-center p-4 pt-0">
-                            <div class="d-inline-block bg-primary text-white rounded-bottom fs-5 pb-1 px-3 mb-4">
-                                <small>Healthy Life</small>
-                            </div>
-                            <h5 class="mb-3">Ensure Medical Treatment</h5>
-                            <p>Tempor erat elitr rebum at clita dolor diam ipsum sit diam amet diam et eos</p>
-                            <div class="causes-progress bg-light p-3 pt-2">
-                                <div class="d-flex justify-content-between">
-                                    <p class="text-dark">$10,000 <small class="text-body">Goal</small></p>
-                                    <p class="text-dark">$9,542 <small class="text-body">Raised</small></p>
-                                </div>
-                                <div class="progress">
-                                    <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
-                                        <span>90%</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="position-relative mt-auto">
-                                <img class="img-fluid" src="{{ asset('assets/charitee/img/courses-3.jpg') }}" alt="">
-                            <div class="causes-overlay">
-                                <a class="btn btn-outline-primary" href="">
-                                    Read More
-                                    <div class="d-inline-flex btn-sm-square bg-primary text-white rounded-circle ms-2">
-                                        <i class="fa fa-arrow-right"></i>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- Pusatkan gambar dan tombol -->
+    <div class="d-flex flex-column align-items-center justify-content-center">
+        <!-- Gambar -->
+        <div class="image-container mb-4" style="text-align: center;">
+            <img id="mainImage" src="{{ asset('assets/charitee/img/4.jpg') }}" alt="Peta Interaktif" class="img-fluid rounded shadow" style="max-width: 100%; height: auto;">
+        </div>
+
+        <!-- Tombol -->
+        <div class="button-container d-flex flex-wrap justify-content-center gap-3">
+            <button class="btn-switch btn-active-1" onclick="changeImage('4.jpg', this, 'btn-active-1')">Pendidikan Anak</button>
+            <button class="btn-switch" onclick="changeImage('5.jpg', this, 'btn-active-2')">Akses Air Bersih</button>
+            <button class="btn-switch" onclick="changeImage('6.jpg', this, 'btn-active-3')">Bencana Alam</button>
         </div>
     </div>
-    <!-- Causes End -->
+</div>
+
+<!-- Style -->
+<style>
+    .btn-switch {
+        padding: 10px 25px;
+        border: none;
+        background-color: #ddd;
+        color: #000;
+        cursor: pointer;
+        border-radius: 8px;
+        font-weight: 600;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-active-1 {
+        background-color: #28A745; /* Biru - Pendidikan Anak */
+        color: white;
+    }
+
+    .btn-active-2 {
+        background-color: #007BFF; /* Hijau - Air Bersih */
+        color: white;
+    }
+
+    .btn-active-3 {
+        background-color: #DC3545; /* Merah - Bencana Alam */
+        color: white;
+    }
+
+    .button-container button {
+        min-width: 180px;
+    }
+</style>
+
+<!-- Script -->
+<script>
+    function changeImage(image, btn, activeClass) {
+        const basePath = "{{ asset('assets/charitee/img') }}/";
+        document.getElementById('mainImage').src = basePath + image;
+
+        document.querySelectorAll('.btn-switch').forEach(button => {
+            button.classList.remove('btn-active-1', 'btn-active-2', 'btn-active-3');
+        });
+
+        btn.classList.add(activeClass);
+    }
+</script>
+<!-- Peta Interaktif End -->
+
+
+
+
 
 <!-- Service Start -->
 <div class="container-xxl py-5">
@@ -247,7 +209,7 @@
             <!-- Pendidikan -->
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                 <div class="service-item bg-white text-center h-100 p-4 p-xl-5">
-                    <i class="fa fa-graduation-cap fa-3x text-primary mb-4"></i>
+                    <i class="fa fa-graduation-cap fa-3x text-success mb-4"></i>
                     <h4 class="mb-3">Pendidikan Anak</h4>
                     <p class="mb-4">Kami mendukung akses pendidikan berkualitas bagi anak-anak di seluruh Indonesia, terutama di wilayah kurang terjangkau.</p>
                     <a class="btn btn-outline-primary px-3" href="{{ route('causes', ['kategori' => 'Pendidikan']) }}">
@@ -261,7 +223,7 @@
             <!-- Air Bersih -->
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                 <div class="service-item bg-white text-center h-100 p-4 p-xl-5">
-                    <i class="fa fa-tint fa-3x text-success mb-4"></i>
+                    <i class="fa fa-tint fa-3x mb-4" style="color: #0d6efd;"></i>
                     <h4 class="mb-3">Akses Air Bersih</h4>
                     <p class="mb-4">Kami menyediakan akses air bersih dan sanitasi untuk masyarakat yang membutuhkan di daerah terpencil.</p>
                     <a class="btn btn-outline-primary px-3" href="{{ route('causes', ['kategori' => 'Air Bersih']) }}">
@@ -272,6 +234,7 @@
                     </a>
                 </div>
             </div>
+
             <!-- Bencana Alam -->
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                 <div class="service-item bg-white text-center h-100 p-4 p-xl-5">
@@ -290,6 +253,7 @@
     </div>
 </div>
 <!-- Service End -->
+
 
 
     <!-- Team Start -->
