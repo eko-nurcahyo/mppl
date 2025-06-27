@@ -30,7 +30,7 @@
         <!-- Filter -->
         <form method="GET" action="{{ route('causes') }}" class="d-flex justify-content-center gap-3 mb-4">
             <select name="wilayah" onchange="this.form.submit()" class="form-select w-auto">
-                <option value="">Semua Pulau/W</option>
+                <option value="">Semua Pulau/Wilayah</option>
                 @foreach ($wilayahList as $wilayah)
                     <option value="{{ $wilayah }}" {{ request('wilayah') == $wilayah ? 'selected' : '' }}>
                         {{ $wilayah }}
@@ -39,7 +39,7 @@
             </select>
 
             <select name="kategori" onchange="this.form.submit()" class="form-select w-auto">
-                <option value="">Semua Tema</option>
+                <option value="">Semua Tema/kategori</option>
                 @foreach ($kategoriList as $kategori)
                     <option value="{{ $kategori }}" {{ request('kategori') == $kategori ? 'selected' : '' }}>
                         {{ $kategori }}
@@ -62,7 +62,7 @@
                         'Papua' => 'text-dark',
                     ];
                     $target = $program->target_donasi ?? 0;
-                    $raised = $program->donations()->sum('nominal');
+                    $raised = $program->donations()->where('status', 'approved')->sum('nominal'); // ✅ Hanya donasi yang disetujui
                     $progress = ($target > 0) ? min(100, ($raised / $target) * 100) : 0;
                 @endphp
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">

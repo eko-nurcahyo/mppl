@@ -7,96 +7,96 @@ return [
     | Default Mailer
     |--------------------------------------------------------------------------
     |
-    | This option controls the default mailer that is used to send all email
-    | messages unless another mailer is explicitly specified when sending
-    | the message. All additional mailers can be configured within the
-    | "mailers" array. Examples of each type of mailer are provided.
-    |
+    | Mailer default yang digunakan untuk mengirim semua email.
+    | Nilainya bisa diubah di file `.env` dengan variabel MAIL_MAILER.
+    | Contoh isi: smtp, log, sendmail, dll.
     */
 
-    'default' => env('MAIL_MAILER', 'log'),
+    'default' => env('MAIL_MAILER', 'log'), // Mengambil mailer default dari file .env, jika tidak ada maka pakai 'log'
 
     /*
     |--------------------------------------------------------------------------
     | Mailer Configurations
     |--------------------------------------------------------------------------
     |
-    | Here you may configure all of the mailers used by your application plus
-    | their respective settings. Several examples have been configured for
-    | you and you are free to add your own as your application requires.
-    |
-    | Laravel supports a variety of mail "transport" drivers that can be used
-    | when delivering an email. You may specify which one you're using for
-    | your mailers below. You may also add additional mailers if needed.
-    |
-    | Supported: "smtp", "sendmail", "mailgun", "ses", "ses-v2",
-    |            "postmark", "resend", "log", "array",
-    |            "failover", "roundrobin"
+    | Konfigurasi lengkap untuk semua mailer yang bisa digunakan di aplikasi.
+    | Bisa pakai driver: smtp, ses, postmark, log, array, failover, dll.
     |
     */
 
     'mailers' => [
 
+        // Konfigurasi mailer SMTP
         'smtp' => [
-            'transport' => 'smtp',
-            'scheme' => env('MAIL_SCHEME'),
-            'url' => env('MAIL_URL'),
-            'host' => env('MAIL_HOST', '127.0.0.1'),
-            'port' => env('MAIL_PORT', 2525),
-            'username' => env('MAIL_USERNAME'),
-            'password' => env('MAIL_PASSWORD'),
-            'timeout' => null,
-            'local_domain' => env('MAIL_EHLO_DOMAIN', parse_url(env('APP_URL', 'http://localhost'), PHP_URL_HOST)),
+            'transport' => 'smtp',                          // Menentukan jenis transport: smtp
+            'scheme' => env('MAIL_SCHEME'),                 // Skema (optional), misalnya SMTPS atau HTTPS
+            'url' => env('MAIL_URL'),                       // Jika tersedia, URL langsung ke server SMTP
+            'host' => env('MAIL_HOST', '127.0.0.1'),        // Alamat host SMTP, default ke localhost
+            'port' => env('MAIL_PORT', 2525),               // Port SMTP, default 2525
+            'username' => env('MAIL_USERNAME'),             // Username akun SMTP
+            'password' => env('MAIL_PASSWORD'),             // Password akun SMTP
+            'timeout' => null,                              // Timeout koneksi SMTP (jika dibutuhkan)
+            'local_domain' => env(                          // Domain lokal yang digunakan untuk EHLO
+                'MAIL_EHLO_DOMAIN',
+                parse_url(env('APP_URL', 'http://localhost'), PHP_URL_HOST) // default ke host dari APP_URL
+            ),
         ],
 
+        // Konfigurasi mailer Amazon SES (jika menggunakan layanan SES dari AWS)
         'ses' => [
             'transport' => 'ses',
         ],
 
+        // Konfigurasi mailer Postmark (layanan pihak ketiga)
         'postmark' => [
             'transport' => 'postmark',
-            // 'message_stream_id' => env('POSTMARK_MESSAGE_STREAM_ID'),
+            // 'message_stream_id' => env('POSTMARK_MESSAGE_STREAM_ID'), // ID stream opsional
             // 'client' => [
             //     'timeout' => 5,
             // ],
         ],
 
+        // Konfigurasi untuk layanan Resend
         'resend' => [
             'transport' => 'resend',
         ],
 
+        // Menggunakan perintah 'sendmail' di server untuk mengirim email
         'sendmail' => [
             'transport' => 'sendmail',
-            'path' => env('MAIL_SENDMAIL_PATH', '/usr/sbin/sendmail -bs -i'),
+            'path' => env('MAIL_SENDMAIL_PATH', '/usr/sbin/sendmail -bs -i'), // Lokasi default binary sendmail
         ],
 
+        // Mailer log: tidak benar-benar mengirim email, hanya mencatat ke log Laravel
         'log' => [
             'transport' => 'log',
-            'channel' => env('MAIL_LOG_CHANNEL'),
+            'channel' => env('MAIL_LOG_CHANNEL'), // Bisa dikustomisasi channel log-nya
         ],
 
+        // Mailer array: menyimpan email di array (berguna untuk testing/unit test)
         'array' => [
             'transport' => 'array',
         ],
 
+        // Failover mailer: mencoba kirim via smtp, jika gagal fallback ke log
         'failover' => [
             'transport' => 'failover',
             'mailers' => [
-                'smtp',
-                'log',
+                'smtp',     // Pertama-tama coba smtp
+                'log',      // Jika gagal, fallback ke log
             ],
-            'retry_after' => 60,
+            'retry_after' => 60, // Tunggu 60 detik sebelum mencoba lagi
         ],
 
+        // Roundrobin mailer: bergantian kirim via ses dan postmark
         'roundrobin' => [
             'transport' => 'roundrobin',
             'mailers' => [
-                'ses',
-                'postmark',
+                'ses',         // Pertama pakai SES
+                'postmark',    // Lalu Postmark
             ],
-            'retry_after' => 60,
+            'retry_after' => 60, // Coba ulang setelah 60 detik
         ],
-
     ],
 
     /*
@@ -104,15 +104,21 @@ return [
     | Global "From" Address
     |--------------------------------------------------------------------------
     |
-    | You may wish for all emails sent by your application to be sent from
-    | the same address. Here you may specify a name and address that is
-    | used globally for all emails that are sent by your application.
+    | Semua email yang dikirim aplikasi akan pakai alamat ini sebagai pengirim.
+    | Bisa diubah di file .env menggunakan MAIL_FROM_ADDRESS dan MAIL_FROM_NAME
     |
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'), // Default alamat email pengirim
+        'name' => env('MAIL_FROM_NAME', 'Example'),                 // Default nama pengirim email
     ],
 
 ];
+// ✅ Kesimpulan:
+//File mail.php ini adalah konfigurasi mail Laravel yang berfungsi untuk:
+//Menentukan mailer default (smtp, log, dll).
+//Menyediakan berbagai jenis konfigurasi pengiriman email (SMTP, SES, Sendmail, dll).
+//Mendukung failover dan roundrobin agar pengiriman email lebih handal.
+//Menentukan alamat pengirim global (from) untuk semua email.
+//Dengan konfigurasi ini, aplikasi dapat mengatur cara pengiriman email secara fleksibel, baik untuk produksi maupun pengujian. Pastikan .env Anda terisi sesuai agar sistem pengiriman email bekerja sebagaimana mestinya.

@@ -1,15 +1,22 @@
 <?php
 
+// Namespace dari file ini menunjukkan bahwa file berada di folder database/seeders
 namespace Database\Seeders;
 
+// Mengimpor Seeder bawaan Laravel untuk membuat seeder
 use Illuminate\Database\Seeder;
+
+// Mengimpor helper string untuk membuat slug
 use Illuminate\Support\Str;
+
+// Mengimpor model Program yang akan diisi datanya
 use App\Models\Program;
 
 class ProgramSeeder extends Seeder
 {
+    // Fungsi utama saat seeder dijalankan
     public function run(): void
-    {
+    {   // Data program dikelompokkan berdasarkan wilayah
         $programsByWilayah = [
             'Jawa' => [
                 ['Beasiswa Anak Yatim', 'Yogyakarta', 'Pendidikan', 85000000, 'PENDIDIKAN.png', 'PENDIDIKAN.png'], // 1
@@ -75,23 +82,29 @@ class ProgramSeeder extends Seeder
             ],
         ];
 
-        foreach ($programsByWilayah as $wilayah => $programs) {
+         // Melakukan iterasi untuk setiap wilayah dan daftar program di dalamnya
+         foreach ($programsByWilayah as $wilayah => $programs) {
+
+            // Iterasi setiap program dalam wilayah tersebut
             foreach ($programs as $data) {
+
+                // Memecah array data menjadi variabel $judul, $kota, dst
                 [$judul, $kota, $kategori, $target, $gambar, $foto_kisah] = array_pad($data, 6, null);
 
+                // Membuat atau mengupdate data program berdasarkan slug
                 Program::updateOrCreate(
-                    ['slug' => Str::slug($judul)],
+                    ['slug' => Str::slug($judul)], // Kondisi pencocokan berdasarkan slug
                     [
-                        'judul' => $judul,
-                        'slug' => Str::slug($judul),
-                        'kategori' => $kategori,
-                        'wilayah' => $wilayah,
-                        'kota' => $kota,
-                        'target_donasi' => $target ?? 100000000,
-                        'status' => 'aktif',
-                        'gambar' => $gambar ? "/assets/charitee/img/gmbr/{$gambar}" : null,
-                        'foto_kisah' => $foto_kisah ? "/assets/charitee/img/gmbr/{$foto_kisah}" : null,
-                        'deskripsi' => 'Program bantuan untuk kategori ' . strtolower($kategori) . ' di wilayah ' . $kota . '.',
+                        'judul' => $judul, // Judul program
+                        'slug' => Str::slug($judul), // Slug otomatis dari judul
+                        'kategori' => $kategori, // Kategori program
+                        'wilayah' => $wilayah, // Wilayah dari array induk
+                        'kota' => $kota, // Kota tempat program berlangsung
+                        'target_donasi' => $target ?? 100000000, // Jika target kosong, pakai default 100 juta
+                        'status' => 'aktif', // Default status aktif
+                        'gambar' => $gambar ? "/assets/charitee/img/gmbr/{$gambar}" : null, // Path gambar jika ada
+                        'foto_kisah' => $foto_kisah ? "/assets/charitee/img/gmbr/{$foto_kisah}" : null, // Path foto kisah
+                        'deskripsi' => 'Program bantuan untuk kategori ' . strtolower($kategori) . ' di wilayah ' . $kota . '.', // Deskripsi singkat otomatis
                     ]
                 );
             }

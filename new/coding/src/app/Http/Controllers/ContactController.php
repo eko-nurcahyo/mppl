@@ -8,11 +8,13 @@ use App\Mail\ContactMail;
 
 class ContactController extends Controller
 {
+    // Menampilkan halaman form kontak
     public function index()
     {
-        return view('frontend.contact'); // File blade-nya di resources/views/frontend/contact.blade.php
+        return view('frontend.contact');
     }
 
+    // Menangani submit form kontak dan kirim email
     public function submit(Request $request)
     {
         $validated = $request->validate([
@@ -22,9 +24,9 @@ class ContactController extends Controller
             'message' => 'required|max:1000',
         ]);
 
-        Mail::to('admin@example.com')->send(new ContactMail($validated));
+        // ✅ Kirim ke email kamu sendiri
+        Mail::to('sukseskita699@gmail.com')->send(new ContactMail($validated));
 
         return back()->with('success', 'Pesan Anda berhasil dikirim! Kami akan segera menghubungi Anda.');
     }
 }
-
