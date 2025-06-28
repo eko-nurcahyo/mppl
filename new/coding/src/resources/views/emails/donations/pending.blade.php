@@ -1,34 +1,25 @@
-@component('mail::message') 
-{{-- Blade directive untuk menggunakan komponen mail bawaan Laravel dengan template layout email bawaan --}}
+@component('mail::message')
+# Halo {{ $donation->nama }}
 
-# Halo **{{ $donation->nama }}**,  
-{{-- Heading pertama menyapa donatur secara personal menggunakan nama dari objek $donation --}}
+Terima kasih telah melakukan donasi untuk program berikut:
 
-Terima kasih telah melakukan donasi untuk program:
-{{-- Kalimat pembuka sebagai bentuk apresiasi kepada donatur --}}
+---
 
-# Donasi Anda Sedang Diverifikasi
-{{-- Heading utama sebagai status terkini dari donasi --}}
+### 📝 Rincian Donasi
 
-Status donasi Anda untuk program:  
-**{{ $donation->program->judul ?? 'Program Donasi' }}**  
-{{-- Menampilkan nama/judul program yang didonasikan. Jika data kosong, tampilkan 'Program Donasi' --}}
+**📌 Program Donasi:** {{ $donation->program->judul ?? '-' }}  
+**🏷️ Kategori:** {{ $donation->program->kategori ?? '-' }}  
+**🌍 Wilayah:** {{ $donation->program->wilayah ?? '-' }}  
+**💰 Jumlah Donasi:** Rp{{ number_format($donation->nominal, 0, ',', '.') }}  
+**📅 Tanggal Donasi:** {{ \Carbon\Carbon::parse($donation->created_at)->format('d M Y H:i') }} WIB  
+**📦 Metode Pembayaran:** {{ $donation->metode_pembayaran }}  
+**📄 Status Donasi:** **{{ ucfirst($donation->status) }}**
 
-Kategori: **{{ $donation->program->kategori ?? '-' }}**  
-{{-- Menampilkan kategori program donasi, default "-" jika tidak tersedia --}}
+---
 
-Wilayah: **{{ $donation->program->wilayah ?? '-' }}**
-{{-- Menampilkan wilayah program, default "-" jika tidak tersedia --}}
+⏳ Saat ini donasi Anda sedang kami proses dan menunggu verifikasi admin.  
+Mohon tunggu maksimal 1×24 jam.
 
-⏳ Donasi Anda saat ini berstatus **Pending** dan sedang menunggu proses verifikasi oleh tim kami.
-{{-- Informasi status donasi saat ini yang masih dalam proses verifikasi --}}
+🙏 Terima kasih atas kontribusi Anda untuk kebaikan bersama.
 
-Kami akan segera menghubungi Anda setelah donasi berhasil diverifikasi.  
-{{-- Memberi tahu bahwa tim akan menghubungi kembali setelah proses selesai --}}
-
-Terima kasih telah berdonasi dan berkontribusi untuk kebaikan bersama. 🙏
-{{-- Ucapan terima kasih atas kontribusi donatur --}}
-
-@endcomponent 
-{{-- Penutup komponen email --}}
-{{-- File pending.blade.php ini adalah template email Laravel yang digunakan untuk memberi tahu donatur bahwa donasi mereka sedang menunggu verifikasi (pending). Template ini memanfaatkan komponen @component('mail::message') yang memberikan tampilan standar dan rapi pada email. Dengan menggunakan data dari objek $donation, sistem dapat menyampaikan informasi secara personal dan informatif kepada donatur. Template ini meningkatkan transparansi dan kepercayaan dalam proses donasi.}}
+@endcomponent

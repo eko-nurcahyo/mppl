@@ -15,6 +15,7 @@ use Filament\Tables\Table;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\BadgeColumn;
 use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Filters\SelectFilter;
 
 // Kelas utama DonationResource yang mewakili resource donasi di panel admin
 class DonationResource extends Resource
@@ -35,36 +36,30 @@ class DonationResource extends Resource
     public static function form(Forms\Form $form): Forms\Form
     {
         return $form->schema([
-            // Dropdown untuk memilih program donasi (relasi ke tabel program)
             Forms\Components\Select::make('program_id')
                 ->label('Program Donasi')
-                ->relationship('program', 'judul') // relasi ke model Program dengan kolom 'judul'
+                ->relationship('program', 'judul')
                 ->searchable()
                 ->required(),
 
-            // Input teks untuk nama donatur
             Forms\Components\TextInput::make('nama')
                 ->required()
                 ->label('Nama Donatur'),
 
-            // Input email donatur
             Forms\Components\TextInput::make('email')
                 ->required()
                 ->email()
                 ->label('Email'),
 
-            // Input nominal donasi
             Forms\Components\TextInput::make('nominal')
                 ->required()
                 ->numeric()
                 ->label('Nominal'),
 
-            // Menampilkan metode pembayaran (hanya baca)
             Forms\Components\TextInput::make('metode_pembayaran')
                 ->label('Metode Pembayaran')
                 ->disabled(),
 
-            // Pilihan status donasi: pending, approved, rejected
             Forms\Components\Select::make('status')
                 ->options([
                     'pending' => 'Pending',
@@ -74,11 +69,9 @@ class DonationResource extends Resource
                 ->required()
                 ->label('Status'),
 
-            // Textarea untuk catatan admin
             Forms\Components\Textarea::make('keterangan')
                 ->label('Catatan Admin'),
 
-            // Upload gambar bukti transfer (hanya baca)
             Forms\Components\FileUpload::make('bukti_transfer')
                 ->label('Bukti Transfer')
                 ->image()
@@ -92,71 +85,65 @@ class DonationResource extends Resource
     public static function table(Table $table): Table
     {
         return $table->columns([
-            // Kolom program donasi
-            TextColumn::make('program.judul')
-                ->label('Program')
-                ->searchable()
-                ->sortable(),
+                TextColumn::make('program.judul')
+                    ->label('Program')
+                    ->searchable()
+                    ->sortable(),
 
-            // Kolom nama donatur
-            TextColumn::make('nama')
-                ->label('Nama')
-                ->searchable()
-                ->sortable(),
+                TextColumn::make('nama')
+                    ->label('Nama')
+                    ->searchable()
+                    ->sortable(),
 
-            // Kolom email donatur
-            TextColumn::make('email')
-                ->label('Email')
-                ->searchable(),
+                TextColumn::make('email')
+                    ->label('Email')
+                    ->searchable(),
 
-            // Kolom nominal donasi
-            TextColumn::make('nominal')
-                ->label('Nominal')
-                ->money('IDR') // Format rupiah
-                ->sortable(),
+                TextColumn::make('nominal')
+                    ->label('Nominal')
+                    ->money('IDR')
+                    ->sortable(),
 
-            // Kolom metode pembayaran
-            TextColumn::make('metode_pembayaran')
-                ->label('Metode Pembayaran'),
+                TextColumn::make('metode_pembayaran')
+                    ->label('Metode Pembayaran'),
 
-            // Kolom status dengan badge warna
-            BadgeColumn::make('status')
-                ->label('Status')
-                ->colors([
-                    'warning' => 'pending',
-                    'success' => 'approved',
-                    'danger' => 'rejected',
-                ])
-                ->sortable(),
+                BadgeColumn::make('status')
+                    ->label('Status')
+                    ->colors([
+                        'warning' => 'pending',
+                        'success' => 'approved',
+                        'danger' => 'rejected',
+                    ])
+                    ->sortable(),
 
-            // Kolom gambar bukti transfer
-            ImageColumn::make('bukti_transfer')
-                ->label('Bukti Transfer')
-                ->disk('public')
-                ->height(40),
+                ImageColumn::make('bukti_transfer')
+                    ->label('Bukti Transfer')
+                    ->disk('public')
+                    ->height(40),
 
-            // Kolom tanggal donasi dibuat
-            TextColumn::make('created_at')
-                ->label('Tanggal')
-                ->dateTime()
-                ->sortable(),
-        ])
-        // Aksi edit pada setiap baris data
-        ->actions([
-            Tables\Actions\EditAction::make(),
-        ])
-        // Aksi hapus massal (bulk)
-        ->bulkActions([
-            Tables\Actions\DeleteBulkAction::make(),
-        ]);
+                TextColumn::make('created_at')
+                    ->label('Tanggal')
+                    ->dateTime()
+                    ->sortable(),
+            ])
+            ->filters([
+                SelectFilter::make('program_id')
+                    ->label('Filter Program')
+                    ->relationship('program', 'judul'),
+            ])
+            ->actions([
+                Tables\Actions\EditAction::make(),
+            ])
+            ->bulkActions([
+                Tables\Actions\DeleteBulkAction::make(),
+            ]);
     }
 
-    // Menentukan halaman-halaman yang tersedia untuk resource ini
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListDonations::route('/'), // halaman daftar donasi
-            'edit' => Pages\EditDonation::route('/{record}/edit'), // halaman edit donasi
+            'index' => Pages\ListDonations::route('/'),
+            'edit' => Pages\EditDonation::route('/{record}/edit'),
         ];
     }
 }

@@ -32,15 +32,7 @@
                 <a class="btn btn-link" href="#">Bantuan</a>
             </div>
 
-            <!-- Newsletter -->
-            <div class="col-lg-3 col-md-6">
-                <h5 class="text-light mb-4">Berlangganan</h5>
-                <p>Dapatkan update terbaru seputar program dan cerita inspiratif dari para penerima manfaat.</p>
-                <div class="position-relative mx-auto" style="max-width: 400px;">
-                    <input class="form-control bg-transparent text-white w-100 py-3 ps-4 pe-5" type="email" placeholder="Email kamu">
-                    <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">Kirim</button>
-                </div>
-            </div>
+           
         </div>
     </div>
 

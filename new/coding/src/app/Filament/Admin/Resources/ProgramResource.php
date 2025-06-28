@@ -178,11 +178,12 @@ class ProgramResource extends Resource
             ])
             ->filters([]) // Bisa ditambahkan filter custom jika dibutuhkan
             ->actions([
-                Tables\Actions\EditAction::make(), // Tombol edit
+                Tables\Actions\EditAction::make(), // ✏️ Edit
+                Tables\Actions\DeleteAction::make(), // 🗑️ Hapus
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(), // Aksi hapus banyak data sekaligus
+                    Tables\Actions\DeleteBulkAction::make(), // 🧹 Hapus banyak sekaligus
                 ]),
             ]);
     }
