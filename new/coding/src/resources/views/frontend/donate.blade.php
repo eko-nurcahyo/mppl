@@ -76,57 +76,57 @@
             </div>
         </div>
 
+   
         <!-- KANAN: FORM -->
-        <div class="col-lg-6">
-            <div class="card border-0 shadow-sm">
-                <div class="card-header bg-warning text-dark fw-bold">
-                    <i class="bi bi-heart-fill text-danger me-1"></i> Form Donasi
-                </div>
-                <div class="card-body">
-                    <form action="{{ route('donate.store') }}" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        <input type="hidden" name="program_id" value="{{ $program->id }}">
-                        <div class="row g-3">
-                            <div class="col-md-6">
-                                <input type="text" name="nama" class="form-control" placeholder="Nama Anda" required>
-                            </div>
-                            <div class="col-md-6">
-                                <input type="email" name="email" class="form-control" placeholder="Email Anda" required>
-                            </div>
-                            <div class="col-md-6">
-                                <input type="number" name="nominal" class="form-control" placeholder="Nominal Donasi (Rp)" required max="{{ $program->target_donasi - $totalTerkumpul }}">
-                            </div>
-                            <div class="col-md-6">
-                                <select name="metode_pembayaran" class="form-select" id="metodeSelect" required>
-                                    <option value="" disabled selected>-- Pilih Metode Pembayaran --</option>
-                                    <option value="BRI">Transfer Bank BRI</option>
-                                    <option value="DANA">DANA</option>
-                                    <option value="GoPay">GoPay</option>
-                                </select>
-                            </div>
+<div class="col-lg-6">
+    <div class="card border-0 shadow-sm">
+        <div class="card-header bg-warning text-dark fw-bold">
+            <i class="bi bi-heart-fill text-danger me-1"></i> Form Donasi
+        </div>
+        <div class="card-body">
+            <form action="{{ route('donate.store') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <input type="hidden" name="program_id" value="{{ $program->id }}">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <input type="text" name="nama" class="form-control" placeholder="Nama Anda" required>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="email" name="email" class="form-control" placeholder="Email Anda" required>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="number" name="nominal" class="form-control" placeholder="Nominal Donasi (Rp)" required max="{{ $program->target_donasi - $totalTerkumpul }}">
+                    </div>
+                    <div class="col-md-6">
+                        <select name="metode_pembayaran" class="form-select" id="metodeSelect" required>
+                            <option value="" disabled selected>-- Pilih Metode Pembayaran --</option>
+                            <option value="BRI">Transfer Bank BRI</option>
+                            <option value="DANA">DANA</option>
+                            <option value="GoPay">GoPay</option>
+                        </select>
+                    </div>
 
-                            <!-- Info Rekening -->
-                            <div id="info-rekening" class="mt-2 d-none" style="background-color: #e8f4fc; border: 1px solid #ddd; padding: 15px; border-radius: 6px;">
-                                <div id="rekening-detail"></div>
-                            </div>
+                    <!-- Info Rekening -->
+                    <div id="info-rekening" class="col-12 d-none">
+                        <div id="rekening-detail" class="text-center" style="background: white; border: 1px solid #ccc; border-radius: 10px; padding: 20px;"></div>
+                    </div>
 
-                            <div class="col-12">
-                                <label for="bukti_transfer" class="form-label fw-semibold text-muted small">Upload Bukti Transfer</label>
-                                <input type="file" name="bukti_transfer" class="form-control" accept="image/*" required>
-                            </div>
-                            <div class="col-12 d-grid">
-                                <button type="submit" class="btn btn-warning text-dark fw-bold">
-                                    <i class="bi bi-send-fill me-1"></i> Kirim Donasi
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                    <small class="text-muted d-block text-center mt-3">* Donasi akan diverifikasi oleh admin dalam waktu 1×24 jam.</small>
+                    <div class="col-12">
+                        <label for="bukti_transfer" class="form-label fw-semibold text-muted small">Upload Bukti Transfer</label>
+                        <input type="file" name="bukti_transfer" class="form-control" accept="image/*" required>
+                    </div>
+                    <div class="col-12 d-grid">
+                        <button type="submit" class="btn btn-warning text-dark fw-bold">
+                            <i class="bi bi-send-fill me-1"></i> Kirim Donasi
+                        </button>
+                    </div>
                 </div>
-            </div>
+            </form>
+            <small class="text-muted d-block text-center mt-3">* Donasi akan diverifikasi oleh admin dalam waktu 1×24 jam.</small>
         </div>
     </div>
 </div>
+
 @endsection
 
 @push('scripts')

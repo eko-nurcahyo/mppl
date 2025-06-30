@@ -51,6 +51,8 @@ Route::post('/contact/submit', [ContactController::class, 'submit'])->name('cont
 Route::fallback(function () {
     return view('frontend.404');
 });
+
+
 // Jika URL yang diakses tidak ditemukan, akan diarahkan ke view 'frontend.404' (halaman error)
 
 //✅ Kesimpulan:

@@ -28,8 +28,6 @@
                 <a class="btn btn-link" href="{{ url('/about') }}">Tentang Kami</a>
                 <a class="btn btn-link" href="{{ url('/contact') }}">Kontak</a>
                 <a class="btn btn-link" href="{{ url('/programs') }}">Program Donasi</a>
-                <a class="btn btn-link" href="#">Syarat & Ketentuan</a>
-                <a class="btn btn-link" href="#">Bantuan</a>
             </div>
 
            
@@ -43,7 +41,7 @@
                 &copy; {{ date('Y') }} <a class="text-primary" href="#">FundUnity</a>. Semua hak dilindungi.
             </div>
             <div class="text-white-50">
-                Dibuat dengan ❤ oleh <a class="text-white" href="https://htmlcodex.com" target="_blank">HTML Codex</a>
+                Dibuat dengan ❤ oleh <a class="text-white" href="https://htmlcodex.com" target="_blank">Kelompok 10</a>
             </div>
         </div>
     </div>
